@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gado Scraper | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Gado-Scraper</h1>
+            <p class="role">Pipeline de Dados Serverless</p>
+            <div class="tech-list">
+                <span class="tag">Python (BS4)</span> 
+                <span class="tag">GitHub Actions</span> 
+                <span class="tag">Cron Jobs</span>
+                <span class="tag">Git Automation</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+
+            <h2>O Objetivo</h2>
+            <p>Este projeto nasceu de uma necessidade real do meu <strong>Sistema de Gestão de Gado (SGG)</strong>. Para que os indicadores financeiros do ERP fossem úteis, eu precisava de cotações precisas e atualizadas da arroba do boi e novilha.</p>
+            <p>O objetivo, portanto, foi criar uma integração autônoma que alimentasse o SGG com dados reais de mercado, eliminando a necessidade de o usuário inserir valores manualmente todos os dias.</p>
+
+            <h2>Arquitetura "Git-as-Database"</h2>
+            <p>Ao invés de pagar por um servidor VPS para rodar um script simples, utilizei a infraestrutura do GitHub Actions como um runner gratuito e agendado.</p>
+
+            <h3>O Workflow Diário (CI/CD):</h3>
+            <ul>
+                <li><strong>Trigger (Cron):</strong> O arquivo <code>atualizacao_diaria.yml</code> dispara o container todos os dias em horário comercial.</li>
+                <li><strong>Extração (Scraping):</strong> Scripts Python robustos navegam nas fontes de dados, tratam erros de conexão e extraem os valores.</li>
+                <li><strong>Persistência (Auto-Commit):</strong> O diferencial do projeto: o próprio robô commita os resultados (JSON) de volta no repositório, criando um banco de dados histórico versionado pelo Git, pronto para ser consumido via API (Raw URL) pelo SGG.</li>
+            </ul>
+            <img src="../assets/img/gado-scraper/workflow.png" alt="Fluxo de Automação GitHub Actions" class="project-img">
+
+            <br>
+            <a href="https://github.com/Dom1ng0s/Gado-Scraper" class="btn" target="_blank">Ver Repositório</a>
+        </div>
+    </main>
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>

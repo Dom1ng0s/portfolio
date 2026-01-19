@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão de Gado | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Sistema de Gestão de Gado (SGG)</h1>
+            <p class="role">ERP Zootécnico High-Performance</p>
+            <div class="tech-list">
+                <span class="tag">Python 3.10</span> 
+                <span class="tag">Flask</span> 
+                <span class="tag">MySQL 8.0</span>
+                <span class="tag">Werkzeug Security</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <h2>O Desafio</h2>
+            <p>O cálculo de indicadores zootécnicos, como o <strong>GMD (Ganho Médio Diário)</strong>, exige o processamento de milhares de registros históricos de pesagens. Em arquiteturas tradicionais, carregar esses dados para a memória da aplicação (Python) gera latência inaceitável (Big O linear ou quadrático) conforme o rebanho escala.</p>
+
+            <h2>A Engenharia: "Database-First"</h2>
+            <p>Para garantir performance em escala, desenhei uma arquitetura onde a inteligência reside no Banco de Dados. O Python atua como um orquestrador leve, enquanto o MySQL executa o trabalho pesado.</p>
+
+            <h3>1. Ecossistema Integrado</h3>
+            <img src="../assets/img/sistema-gado/financeiro.png" alt="Dashboard Financeiro" class="project-img">
+            <p>O painel financeiro não é isolado. Ele consome dados de cotação da arroba em tempo real através da integração com o microserviço <strong>Gado-Scraper</strong>, garantindo que o valuation do rebanho esteja sempre atualizado com o mercado.</p>
+
+            <h3>2. Otimização via SQL Views</h3>
+            
+            <div class="duo-grid">
+                <div>
+                    <img src="../assets/img/sistema-gado/financeiro.png" alt="Dashboard Financeiro" class="project-img" style="margin-top: 0;">
+                    <p class="grid-caption">Frontend: Dashboard Gerado</p>
+                </div>
+                <div>
+                    <img src="../assets/img/sistema-gado/viewfluxocaixa.png" alt="Código da View SQL" class="project-img" style="margin-top: 0;">
+                    <p class="grid-caption">Backend: View Materializada</p>
+                </div>
+            </div>
+
+            <p>Ao invés de loops complexos no backend, implementei Views Materializadas virtuais. A View <code>v_fluxo_caixa</code> processa entradas e saídas diretamente no banco, entregando o resultado instantaneamente.</p>
+
+            <h3>3. Analytics e Rebanho</h3>
+            <img src="../assets/img/sistema-gado/rebanho.png" alt="Analytics do Rebanho" class="project-img">
+            <p>Gráficos de distribuição de categorias e peso do rebanho em tempo real, utilizando índices otimizados para consultas rápidas.</p>
+
+            <h3>4. Monitoramento Individual (GMD)</h3>
+            <p>O cálculo de Ganho Médio Diário exige cruzar a primeira e a última pesagem de cada animal. A View <code>v_gmd_analitico</code> resolve isso no banco.</p>
+
+            <div class="duo-grid">
+                <div>
+                    <img src="../assets/img/sistema-gado/viewgmd.png" alt="Código SQL GMD" class="project-img" style="margin-top: 0;">
+                    <p class="grid-caption">Backend: Lógica na View</p>
+                </div>
+                <div>
+                    <img src="../assets/img/sistema-gado/animal.png" alt="Ficha do Animal" class="project-img" style="margin-top: 0;">
+                    <p class="grid-caption">Frontend: Dados Zootécnicos</p>
+                </div>
+            </div>
+
+            <br>
+            <a href="https://github.com/Dom1ng0s/sistema_gado" class="btn" target="_blank">Ver Código no GitHub</a>
+        </div>
+    </main>
+    
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

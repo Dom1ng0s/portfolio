@@ -1,0 +1,260 @@
+:root {
+    /* Paleta Dark Mode Moderna */
+    --bg-body: #121212;
+    --bg-card: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    
+    /* Espaçamentos */
+    --container-width: 1000px;
+    --radius: 12px;
+}
+
+/* Reset Básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+ul { list-style: none; }
+
+/* Container Centralizado */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER --- */
+header {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: bold; font-size: 1.2rem; }
+.nav-links a { margin-left: 20px; color: var(--text-muted); }
+.nav-links a:hover { color: var(--accent); }
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    padding: 60px 0;
+    gap: 30px;
+}
+
+.hero-img img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-text h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.hero-text .role { color: var(--accent); font-weight: bold; margin-bottom: 20px; display: block; }
+.hero-text p { color: var(--text-muted); max-width: 500px; margin: 0 auto 30px; }
+
+.btn {
+    background-color: var(--accent);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.btn:hover { background-color: var(--accent-hover); }
+
+/* --- SEÇÕES E TÍTULOS --- */
+.section-title { font-size: 2rem; margin-bottom: 30px; text-align: center; margin-top: 60px; }
+
+/* --- CARDS (Base) --- */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid #333;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.card h3 { margin-bottom: 10px; color: var(--text-main); }
+.card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
+.tag { font-size: 0.8rem; background: #333; padding: 4px 8px; border-radius: 4px; color: var(--text-muted); margin-right: 5px; }
+
+/* --- GRID SYSTEM (Quem sou eu) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- CARROSSEL DE PROJETOS --- */
+.projects-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 5px;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+}
+
+.projects-container::-webkit-scrollbar { height: 6px; }
+.projects-container::-webkit-scrollbar-track { background: transparent; }
+.projects-container::-webkit-scrollbar-thumb { background-color: #333; border-radius: 4px; }
+
+.projects-container .card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+}
+
+/* --- RODAPÉ --- */
+footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid #333; margin-top: 60px; }
+
+/* --- RESPONSIVIDADE --- */
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+    }
+    .hero-text p { margin: 0 0 30px 0; }
+}
+
+/* =========================================
+   PÁGINAS INTERNAS (DETALHES DOS PROJETOS)
+   ========================================= */
+
+.project-header {
+    padding: 40px 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+.back-link:hover { color: var(--accent); }
+
+.tech-list {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+/* Estilo unificado para imagens dentro dos projetos */
+.project-content img,
+.project-img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+    margin-top: 20px;
+    display: block;
+}
+
+/* Estilo para listas dentro do conteúdo do projeto */
+.project-content ul,
+.project-content ol {
+    margin-left: 20px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.project-content li {
+    margin-bottom: 8px;
+}
+
+/* Estilo para snippets de código */
+code {
+    background: #333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #e6db74; /* Amarelo estilo Monokai */
+    font-family: monospace;
+}
+
+.project-content h3 {
+    margin-top: 30px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+/* --- GRID PARA IMAGENS LADO A LADO --- */
+.duo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide em 2 colunas iguais */
+    gap: 20px;                      /* Espaço entre elas */
+    margin: 20px 0;
+}
+
+/* Legendas das imagens no grid */
+.grid-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -20px; /* Aproxima do rodapé da imagem */
+    margin-bottom: 20px;
+}
+
+/* No celular, fica uma embaixo da outra */
+@media (max-width: 768px) {
+    .duo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ... Resto do seu CSS acima ... */
+
+/* --- LIGHTBOX (ZOOM) GLOBAL --- */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active img {
+    transform: scale(1);
+}

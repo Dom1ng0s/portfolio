@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementação RSA | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>RSA Criptografia</h1>
+            <p class="role">Implementação Algorítmica "From Scratch"</p>
+            <div class="tech-list">
+                <span class="tag">Python</span> 
+                <span class="tag">Matemática Discreta</span> 
+                <span class="tag">Algoritmos</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+
+            <h2>O Conceito</h2>
+            <p>Em um mundo onde bibliotecas como <code>cryptography</code> fazem tudo magicamente, este projeto é um exercício de fundamentos. O objetivo foi implementar o algoritmo RSA (Rivest-Shamir-Adleman) puro, lidando diretamente com a teoria dos números que garante a segurança da web moderna.</p>
+
+            <h2>Engenharia Matemática</h2>
+            <p>O maior desafio não foi a criptografia em si, mas a implementação eficiente das operações aritméticas necessárias para chaves seguras:</p>
+            
+            <ul>
+                <li><strong>Exponenciação Modular Rápida:</strong> A função <code>modular(base, exp, mod)</code> evita o estouro de memória ao calcular potências gigantescas (necessárias para o RSA) utilizando a propriedade <code>(a * b) % m</code> iterativamente.</li>
+                <li><strong>Inverso Modular (Euclides Estendido):</strong> Implementação manual da função <code>inverso_modular</code> para encontrar a chave privada <code>d</code>, garantindo que <code>(d * e) % phi == 1</code>.</li>
+            </ul>
+
+            <h3>Pipeline de Execução:</h3>
+            <ol>
+                <li><strong>Geração de Chaves:</strong> O usuário fornece dois números primos <code>p</code> e <code>q</code>. O sistema calcula o totiente de Euler e gera o par de chaves pública e privada.</li>
+                <li><strong>Cifragem:</strong> A mensagem é convertida para inteiros e elevada à potência da chave pública.</li>
+                <li><strong>Persistência:</strong> O sistema salva as chaves e a mensagem cifrada em arquivos <code>.txt</code> para simular uma troca de mensagens real.</li>
+            </ol>
+            <img src="../assets/img/rsa-criptografia/code-snippet.png" alt="Snippet das funções matemáticas do RSA" class="project-img">
+
+            <br>
+            <a href="https://github.com/Dom1ng0s/rsa-criptografia" class="btn" target="_blank">Ver Código Fonte</a>
+        </div>
+    </main>
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>

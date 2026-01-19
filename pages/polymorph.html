@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymorph AI | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Polymorph AI</h1>
+            <p class="role">CLI de Otimização de Currículos</p>
+            <div class="tech-list">
+                <span class="tag">Google Gemini API</span> 
+                <span class="tag">Python (Typer)</span> 
+                <span class="tag">Playwright</span>
+                <span class="tag">Jinja2</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+
+            <h2>O Problema: O "Muro" dos ATS</h2>
+            <p>O mercado de tecnologia atual exige volume e precisão nas candidaturas. Sistemas de Rastreamento de Candidatos (ATS) rejeitam automaticamente currículos que não contêm as palavras-chave exatas da vaga, tornando o processo de aplicação manual exaustivo e ineficiente.</p>
+
+            <h2>A Solução: Engenharia de Prompt e Automação</h2>
+            <p>O <strong>Polymorph</strong> atua como um "Camaleão Digital". É uma ferramenta de linha de comando (CLI) construída para desenvolvedores que querem automatizar sua busca por emprego.</p>
+            <p>Ele lê a descrição de uma vaga (Job Description), analisa seu currículo base (JSON) e <strong>reescreve suas experiências</strong> usando LLMs para destacar exatamente o que o recrutador quer ver.</p>
+
+            <h2>Pipeline de Execução</h2>
+            <p>O sistema processa a candidatura em 3 estágios:</p>
+            
+            <ol>
+                <li><strong>Ingestão e Análise (Typer + Gemini):</strong> 
+                    Ao rodar o comando <code>python polymorph.py apply</code>, o script captura o texto da vaga e envia um prompt estruturado para o Google Gemini Pro, instruindo-o a reordenar skills e adaptar o resumo profissional.
+                </li>
+                <li><strong>Renderização Dinâmica (Jinja2):</strong> 
+                    O JSON otimizado retornado pela IA é injetado em templates HTML/CSS profissionais, garantindo separação total entre dados e design.
+                </li>
+                <li><strong>Impressão Headless (Playwright):</strong> 
+                    Um navegador Chromium invisível renderiza o HTML final e "imprime" um PDF vetorial de alta fidelidade, pronto para envio.
+                </li>
+            </ol>
+
+            <h3>Funcionalidades Avançadas:</h3>
+            <ul>
+                <li><strong>Batch Mode:</strong> O comando <code>batch</code> permite processar uma pasta inteira com dezenas de descrições de vagas simultaneamente.</li>
+                <li><strong>Smart Caching:</strong> O sistema implementa cache local para evitar chamadas repetidas à API para a mesma vaga, economizando tokens e dinheiro.</li>
+                <li><strong>Resiliência:</strong> Tratamento automático de <code>RateLimitError</code> da API do Google, garantindo que o processamento em lote não falhe no meio.</li>
+            </ul>
+            <img src="../assets/img/polymorph/arquitetura.png" alt="Arquitetura do Polymorph" class="project-img">
+
+            <br>
+            <a href="https://github.com/Dom1ng0s/polymorph" class="btn" target="_blank">Ver Código no GitHub</a>
+        </div>
+    </main>
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>
