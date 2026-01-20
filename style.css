@@ -368,3 +368,46 @@ header {
     from, to { border-color: transparent }
     50% { border-color: var(--accent) }
 }
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+        padding: 0 15px;
+        line-height: 1.2;
+    }
+
+    .typewriter {
+        font-size: 1.1rem; /* Diminui o tamanho para caber em uma linha no iPhone */
+        width: 0;
+        max-width: 100%;
+        animation: typing 3s steps(25, end) forwards, blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100%; }
+    }
+
+    p, .description {
+        font-size: 1rem;
+        padding: 0 20px;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
