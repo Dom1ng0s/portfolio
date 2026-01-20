@@ -354,13 +354,12 @@ header {
     margin: 0;
     width: 0;
     vertical-align: bottom;
-    /* Alterado: 3s de duração e 25 passos */
     animation: typing 3s steps(25, end) forwards, blink-caret .75s step-end infinite;
 }
 
 @keyframes typing {
     from { width: 0 }
-    to { width: 25ch; } /* Alterado: largura exata de 25 caracteres */
+    to { width: 25ch; } 
 }
 
 /* O blink-caret continua igual */
@@ -370,44 +369,52 @@ header {
 }
 
 @media (max-width: 480px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     h1 {
-        font-size: 1.8rem;
-        padding: 0 15px;
-        line-height: 1.2;
+        font-size: 1.6rem;
+        padding: 0 20px;
+        text-align: center;
     }
 
     .typewriter {
-        font-size: 1.1rem; /* Diminui o tamanho para caber em uma linha no iPhone */
-        width: 0;
-        max-width: 100%;
-        animation: typing 3s steps(25, end) forwards, blink-caret .75s step-end infinite;
-    }
-
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100%; }
+        font-size: 1.4rem;
+        display: block;
+        width: 100% !important;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+        overflow: visible;
+        text-align: center;
     }
 
     p, .description {
         font-size: 1rem;
-        padding: 0 20px;
-        line-height: 1.5;
-        word-wrap: break-word;
+        padding: 0 25px;
+        line-height: 1.6;
+        text-align: center;
+        width: auto;
+        white-space: normal;
+        overflow-wrap: break-word;
     }
 
     .button-group {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
-        width: 100%;
+        gap: 15px;
+        margin-top: 20px;
         padding: 0 20px;
     }
 
     .btn {
         width: 100%;
-        max-width: 300px;
-        text-align: center;
-        box-sizing: border-box;
+        max-width: 280px;
+        display: inline-block;
     }
 }
