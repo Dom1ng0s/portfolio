@@ -344,3 +344,27 @@ header {
     backdrop-filter: blur(10px); /* O efeito de vidro */
     border-bottom: 1px solid #333;
 }
+
+.typewriter {
+    font-family: 'Fira Code', monospace;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid var(--accent);
+    white-space: nowrap;
+    margin: 0;
+    width: 0;
+    vertical-align: bottom;
+    /* Alterado: 3s de duração e 25 passos */
+    animation: typing 3s steps(25, end) forwards, blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 25ch; } /* Alterado: largura exata de 25 caracteres */
+}
+
+/* O blink-caret continua igual */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent) }
+}
