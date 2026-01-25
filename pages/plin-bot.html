@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plin Bot | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Plin </h1>
+            <p class="role">Bot de Gestão Financeira & Self-Hosting</p>
+            <div class="tech-list">
+                <span class="tag">Python</span> 
+                <span class="tag">SQLAlchemy</span> 
+                <span class="tag">Docker</span>
+                <span class="tag">Telegram API</span>
+                <span class="tag">CasaOS</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <h2>O Objetivo</h2>
+            <p>O <strong>Plin</strong> foi desenvolvido para eliminar a fricção no registro de despesas diárias. Ao invés de abrir planilhas ou apps pesados, o usuário registra gastos e receitas através de uma conversa simples no Telegram, garantindo que o controle financeiro aconteça no momento em que a transação ocorre.</p>
+
+            <h2>Engenharia e Infraestrutura</h2>
+            <p>O projeto demonstra a aplicação de conceitos de backend robusto e infraestrutura autônoma:</p>
+            <ul>
+                <li><strong>Persistência Eficiente:</strong> Utiliza <code>SQLAlchemy</code> para abstrair a camada de dados, operando sobre um banco SQLite que garante portabilidade e rapidez.</li>
+                <li><strong>Arquitetura de Comandos:</strong> Implementação de handlers assíncronos para lidar com múltiplas requisições simultâneas via <code>python-telegram-bot</code>.</li>
+                <li><strong>Deploy e Autonomia:</strong> O bot é totalmente containerizado com <strong>Docker</strong> e hospedado no meu próprio servidor <strong>CasaOS</strong>, garantindo 100% de controle sobre os dados e disponibilidade.</li>
+            </ul>
+
+            <h2>O Futuro: Inteligência Artificial</h2>
+            <p>Atualmente em desenvolvimento ativo, o Plin está evoluindo para além dos comandos fixos. O roadmap do projeto inclui:</p>
+            <ol>
+                <li><strong>Processamento de Linguagem Natural (NLP):</strong> Implementação de IA para entender mensagens como "gastei 40 reais com pizza hoje" sem necessidade de comandos rígidos.</li>
+                <li><strong>Interface de Voz:</strong> Futura integração para processamento de áudios, permitindo o registro de transações por fala.</li>
+                <li><strong>Visualização:</strong> Geração de gráficos automáticos de saúde financeira diretamente no chat.</li>
+            </ol>
+
+            <div class="project-video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="../assets/img/plin-bot/execucao.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+                <p class="grid-caption">Demonstração da execução do Plin Bot.</p>
+            </div>
+            <br>
+            <a href="https://github.com/Dom1ng0s/Plin" class="btn" target="_blank">Ver Código no GitHub</a>
+            <a href="https://t.me/Plin_Financeiro_bot" class="btn" target="_blank">Teste o Plin aqui!</a>
+        </div>
+    </main>
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>

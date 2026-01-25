@@ -418,3 +418,23 @@ header {
         display: inline-block;
     }
 }
+
+.project-video-container {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.project-video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #333;
+    display: block;
+}
+
+.project-video-container .grid-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    margin-top: 10px;
+}
