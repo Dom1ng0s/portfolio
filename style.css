@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;700&display=swap');:root {
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;700&display=swap');
+:root {
     /* Paleta Dark Mode Moderna */
-    --bg-body: #121212;
+    --bg-body: #080808;
     --bg-card: #1e1e1e;
-    --text-main: #e0e0e0;
+    --text-main: #f0f0f0;
     --text-muted: #a0a0a0;
     --accent: #3b82f6;
     --accent-hover: #2563eb;
+    --border: rgba(255, 255, 255, 0.08);
     
     /* Espaçamentos */
     --container-width: 1000px;
@@ -17,12 +19,29 @@
 
 body {
     background-color: var(--bg-body);
+    /* Fundo com textura de grid sutil */
+    background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+    background-size: 32px 32px;
     color: var(--text-main);
-    font-family: 'Roboto Slab',sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
-h1, h2, h3 .logo {
+
+/* Reset Básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+h1, h2, h3, .logo {
     font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.logo { 
+    font-size: 1.1rem;
+    color: var(--accent);
+    text-transform: lowercase;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
@@ -43,7 +62,7 @@ header {
     align-items: center;
 }
 
-.logo { font-weight: bold; font-size: 1.2rem;}
+
 .nav-links a { margin-left: 20px; color: var(--text-muted); }
 .nav-links a:hover { color: var(--accent); }
 
