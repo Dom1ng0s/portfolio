@@ -17,7 +17,7 @@
         
         <div class="project-header">
             <h1>Polymorph AI</h1>
-            <p class="role">CLI de Otimização de Currículos</p>
+            <p class="role">CLI que eu construí para usar nas minhas próprias candidaturas</p>
             <div class="tech-list">
                 <span class="tag">Google Gemini API</span> 
                 <span class="tag">Python (Typer)</span> 
@@ -28,34 +28,25 @@
 
         <div class="project-content">
 
-            <h2>O Problema: O "Muro" dos ATS</h2>
-            <p>O mercado de tecnologia atual exige volume e precisão nas candidaturas. Sistemas de Rastreamento de Candidatos (ATS) rejeitam automaticamente currículos que não contêm as palavras-chave exatas da vaga, tornando o processo de aplicação manual exaustivo e ineficiente.</p>
+            <h2>O Problema</h2>
+            <p>Quando comecei a me candidatar para estágios, percebi que o mesmo currículo não funcionava para vagas diferentes. Sistemas de Rastreamento de Candidatos (ATS) rejeitam automaticamente currículos que não contêm as palavras-chave exatas da descrição da vaga, muitas vezes antes de qualquer humano ler uma linha.</p>
+            <p>Adaptar o currículo manualmente para cada vaga consumia tempo demais. Então construí uma ferramenta para fazer isso por mim.</p>
 
-            <h2>A Solução: Engenharia de Prompt e Automação</h2>
-            <p>O <strong>Polymorph</strong> atua como um "Camaleão Digital". É uma ferramenta de linha de comando (CLI) construída para desenvolvedores que querem automatizar sua busca por emprego.</p>
-            <p>Ele lê a descrição de uma vaga (Job Description), analisa seu currículo base (JSON) e <strong>reescreve suas experiências</strong> usando LLMs para destacar exatamente o que o recrutador quer ver.</p>
+            <h2>A Solução</h2>
+            <p>O Polymorph é uma CLI que lê a descrição de uma vaga, analisa o currículo base em JSON e usa o Google Gemini para reescrever as experiências no vocabulário exato do recrutador. O resultado é um PDF profissional gerado em menos de 30 segundos, pronto para envio.</p>
+            <p>O currículo que você está avaliando agora passou pelo Polymorph.</p>
 
             <h2>Pipeline de Execução</h2>
-            <p>O sistema processa a candidatura em 3 estágios:</p>
-            
-            <ol>
-                <li><strong>Ingestão e Análise (Typer + Gemini):</strong> 
-                    Ao rodar o comando <code>python polymorph.py apply</code>, o script captura o texto da vaga e envia um prompt estruturado para o Google Gemini Pro, instruindo-o a reordenar skills e adaptar o resumo profissional.
-                </li>
-                <li><strong>Renderização Dinâmica (Jinja2):</strong> 
-                    O JSON otimizado retornado pela IA é injetado em templates HTML/CSS profissionais, garantindo separação total entre dados e design.
-                </li>
-                <li><strong>Impressão Headless (Playwright):</strong> 
-                    Um navegador Chromium invisível renderiza o HTML final e "imprime" um PDF vetorial de alta fidelidade, pronto para envio.
-                </li>
-            </ol>
+            <p>O processamento acontece em três estágios encadeados. Ao rodar <code>python polymorph.py apply</code>, o script captura o texto da vaga e envia um prompt estruturado para o Gemini Pro, que reordena skills e adapta o resumo profissional. O JSON retornado pela IA é injetado num template via Jinja2, mantendo separação total entre dados e design. Por fim, um navegador Chromium headless via Playwright renderiza o HTML e gera um PDF vetorial de alta fidelidade.</p>
 
-            <h3>Funcionalidades Avançadas:</h3>
+            <h2>Engenharia de Borda</h2>
+            <p>O caminho feliz é simples. O que diferencia o projeto são os casos que a maioria ignora:</p>
             <ul>
-                <li><strong>Batch Mode:</strong> O comando <code>batch</code> permite processar uma pasta inteira com dezenas de descrições de vagas simultaneamente.</li>
-                <li><strong>Smart Caching:</strong> O sistema implementa cache local para evitar chamadas repetidas à API para a mesma vaga, economizando tokens e dinheiro.</li>
-                <li><strong>Resiliência:</strong> Tratamento automático de <code>RateLimitError</code> da API do Google, garantindo que o processamento em lote não falhe no meio.</li>
+                <li><strong>Batch Mode:</strong> O comando <code>batch</code> processa uma pasta inteira com dezenas de descrições de vagas de uma só vez.</li>
+                <li><strong>Smart Caching:</strong> O sistema armazena resultados localmente para evitar chamadas repetidas à API para a mesma vaga, economizando tokens e tempo.</li>
+                <li><strong>Resiliência:</strong> Tratamento automático de <code>RateLimitError</code> da API do Google garante que um processamento em lote não falhe no meio sem aviso.</li>
             </ul>
+
             <img src="../assets/img/polymorph/arquitetura.png" alt="Arquitetura do Polymorph" class="project-img">
 
             <br>

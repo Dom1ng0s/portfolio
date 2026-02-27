@@ -17,7 +17,7 @@
         
         <div class="project-header">
             <h1>RSA Criptografia</h1>
-            <p class="role">Implementação Algorítmica "From Scratch"</p>
+            <p class="role">Implementação algorítmica sem bibliotecas externas</p>
             <div class="tech-list">
                 <span class="tag">Python</span> 
                 <span class="tag">Matemática Discreta</span> 
@@ -27,23 +27,20 @@
 
         <div class="project-content">
 
-            <h2>O Conceito</h2>
-            <p>Em um mundo onde bibliotecas como <code>cryptography</code> fazem tudo magicamente, este projeto é um exercício de fundamentos. O objetivo foi implementar o algoritmo RSA (Rivest-Shamir-Adleman) puro, lidando diretamente com a teoria dos números que garante a segurança da web moderna.</p>
+            <h2>O Contexto</h2>
+            <p>Projeto final da disciplina de Matemática Discreta na UFAL. O requisito era implementar o algoritmo RSA sem o uso de bibliotecas criptográficas, lidando diretamente com a teoria dos números que sustenta a segurança da web moderna.</p>
+            <p>Toda conexão HTTPS depende desse algoritmo. Implementá-lo do zero obrigou a entender o que de fato acontece por baixo, não apenas chamar uma função.</p>
 
-            <h2>Engenharia Matemática</h2>
-            <p>O maior desafio não foi a criptografia em si, mas a implementação eficiente das operações aritméticas necessárias para chaves seguras:</p>
-            
+            <h2>Os Desafios Matemáticos</h2>
+            <p>O maior desafio não foi a lógica do RSA em si, mas implementar com eficiência as operações aritméticas que ele exige para chaves seguras.</p>
             <ul>
-                <li><strong>Exponenciação Modular Rápida:</strong> A função <code>modular(base, exp, mod)</code> evita o estouro de memória ao calcular potências gigantescas (necessárias para o RSA) utilizando a propriedade <code>(a * b) % m</code> iterativamente.</li>
-                <li><strong>Inverso Modular (Euclides Estendido):</strong> Implementação manual da função <code>inverso_modular</code> para encontrar a chave privada <code>d</code>, garantindo que <code>(d * e) % phi == 1</code>.</li>
+                <li><strong>Exponenciação Modular Rápida:</strong> A função <code>modular(base, exp, mod)</code> evita estouro de memória ao calcular potências gigantescas usando a propriedade <code>(a * b) % m</code> de forma iterativa. Sem isso, os números envolvidos no RSA são computacionalmente inviáveis.</li>
+                <li><strong>Inverso Modular via Euclides Estendido:</strong> Implementação manual da função <code>inverso_modular</code> para encontrar a chave privada <code>d</code>, garantindo que <code>(d * e) % phi == 1</code>. Essa é a operação que torna a descriptografia possível.</li>
             </ul>
 
-            <h3>Pipeline de Execução:</h3>
-            <ol>
-                <li><strong>Geração de Chaves:</strong> O usuário fornece dois números primos <code>p</code> e <code>q</code>. O sistema calcula o totiente de Euler e gera o par de chaves pública e privada.</li>
-                <li><strong>Cifragem:</strong> A mensagem é convertida para inteiros e elevada à potência da chave pública.</li>
-                <li><strong>Persistência:</strong> O sistema salva as chaves e a mensagem cifrada em arquivos <code>.txt</code> para simular uma troca de mensagens real.</li>
-            </ol>
+            <h2>Como Funciona</h2>
+            <p>O usuário fornece dois números primos <code>p</code> e <code>q</code>. O sistema calcula o totiente de Euler e gera o par de chaves pública e privada. A mensagem é convertida para inteiros e cifrada com a chave pública. As chaves e a mensagem cifrada são salvas em arquivos <code>.txt</code>, simulando uma troca de mensagens real entre duas partes.</p>
+
             <img src="../assets/img/rsa-criptografia/code-snippet.png" alt="Snippet das funções matemáticas do RSA" class="project-img">
 
             <br>

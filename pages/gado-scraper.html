@@ -17,7 +17,7 @@
         
         <div class="project-header">
             <h1>Gado-Scraper</h1>
-            <p class="role">Pipeline de Dados Serverless</p>
+            <p class="role">Pipeline ETL com Git como banco de dados</p>
             <div class="tech-list">
                 <span class="tag">Python (BS4)</span> 
                 <span class="tag">GitHub Actions</span> 
@@ -28,19 +28,17 @@
 
         <div class="project-content">
 
-            <h2>O Objetivo</h2>
-            <p>Este projeto nasceu de uma necessidade real do meu <strong>Sistema de Gestão de Gado (SGG)</strong>. Para que os indicadores financeiros do ERP fossem úteis, eu precisava de cotações precisas e atualizadas da arroba do boi e novilha.</p>
-            <p>O objetivo, portanto, foi criar uma integração autônoma que alimentasse o SGG com dados reais de mercado, eliminando a necessidade de o usuário inserir valores manualmente todos os dias.</p>
+            <h2>O Problema</h2>
+            <p>Para que o <a href="sistema-gado.html">Sistema de Gestão de Gado</a> calculasse o valuation do rebanho com precisão, ele precisava de cotações atualizadas da arroba do boi e da novilha todos os dias. Inserir esses valores manualmente tornaria o ERP dependente de uma rotina humana, quebrando a proposta de automação do sistema.</p>
+            <p>A fonte de referência do mercado é a <strong>Scot Consultoria</strong>, que publica cotações diárias das 33 principais praças pecuárias do Brasil. O objetivo foi automatizar completamente essa coleta.</p>
 
-            <h2>Arquitetura "Git-as-Database"</h2>
-            <p>Ao invés de pagar por um servidor VPS para rodar um script simples, utilizei a infraestrutura do GitHub Actions como um runner gratuito e agendado.</p>
+            <h2>A Decisão de Arquitetura: Git como Banco de Dados</h2>
+            <p>Rodar um servidor VPS só para executar um script diário seria desperdício de infraestrutura e custo. A solução foi usar o GitHub Actions como runner gratuito e agendado, mas o detalhe mais interessante está na persistência dos dados.</p>
+            <p>Em vez de um banco de dados convencional, o próprio repositório Git serve como armazenamento histórico. A cada execução, o robô commita o JSON atualizado de volta no repositório. O resultado é um histórico versionado de cotações, consultável via Raw URL pelo SGG, onde cada commit representa um dia de mercado.</p>
 
-            <h3>O Workflow Diário (CI/CD):</h3>
-            <ul>
-                <li><strong>Trigger (Cron):</strong> O arquivo <code>atualizacao_diaria.yml</code> dispara o container todos os dias em horário comercial.</li>
-                <li><strong>Extração (Scraping):</strong> Scripts Python robustos navegam nas fontes de dados, tratam erros de conexão e extraem os valores.</li>
-                <li><strong>Persistência (Auto-Commit):</strong> O diferencial do projeto: o próprio robô commita os resultados (JSON) de volta no repositório, criando um banco de dados histórico versionado pelo Git, pronto para ser consumido via API (Raw URL) pelo SGG.</li>
-            </ul>
+            <h2>Como Funciona</h2>
+            <p>O arquivo <code>atualizacao_diaria.yml</code> dispara o pipeline todos os dias em horário comercial. O script Python acessa o site da Scot Consultoria, trata eventuais erros de conexão e extrai os valores das 33 praças. O JSON resultante é commitado automaticamente no repositório, ficando disponível imediatamente para consumo pelo ERP.</p>
+
             <img src="../assets/img/gado-scraper/workflow.png" alt="Fluxo de Automação GitHub Actions" class="project-img">
 
             <br>

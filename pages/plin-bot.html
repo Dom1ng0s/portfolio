@@ -17,7 +17,7 @@
         
         <div class="project-header">
             <h1>Plin </h1>
-            <p class="role">Bot de Gestão Financeira & Self-Hosting</p>
+            <p class="role">Bot funcional com self-hosting em homelab próprio</p>
             <div class="tech-list">
                 <span class="tag">Python</span> 
                 <span class="tag">SQLAlchemy</span> 
@@ -28,31 +28,26 @@
         </div>
 
         <div class="project-content">
-            <h2>O Objetivo</h2>
-            <p>O <strong>Plin</strong> foi desenvolvido para eliminar a fricção no registro de despesas diárias. Ao invés de abrir planilhas ou apps pesados, o usuário registra gastos e receitas através de uma conversa simples no Telegram, garantindo que o controle financeiro aconteça no momento em que a transação ocorre.</p>
 
-            <h2>Engenharia e Infraestrutura</h2>
-            <p>O projeto demonstra a aplicação de conceitos de backend robusto e infraestrutura autônoma:</p>
-            <ul>
-                <li><strong>Persistência Eficiente:</strong> Utiliza <code>SQLAlchemy</code> para abstrair a camada de dados, operando sobre um banco SQLite que garante portabilidade e rapidez.</li>
-                <li><strong>Arquitetura de Comandos:</strong> Implementação de handlers assíncronos para lidar com múltiplas requisições simultâneas via <code>python-telegram-bot</code>.</li>
-                <li><strong>Deploy e Autonomia:</strong> O bot é totalmente containerizado com <strong>Docker</strong> e hospedado no meu próprio servidor <strong>CasaOS</strong>, garantindo 100% de controle sobre os dados e disponibilidade.</li>
-            </ul>
+            <h2>O Problema</h2>
+            <p>Aplicativos de finanças pessoais têm telas demais para quem só quer registrar um gasto no momento em que ele acontece. O Plin resolve isso de forma direta: o usuário registra entradas e saídas pelo Telegram, sem abrir nenhum app separado.</p>
 
-            <h2>O Futuro: Inteligência Artificial</h2>
-            <p>Atualmente em desenvolvimento ativo, o Plin está evoluindo para além dos comandos fixos. O roadmap do projeto inclui:</p>
-            <ol>
-                <li><strong>Processamento de Linguagem Natural (NLP):</strong> Implementação de IA para entender mensagens como "gastei 40 reais com pizza hoje" sem necessidade de comandos rígidos.</li>
-                <li><strong>Interface de Voz:</strong> Futura integração para processamento de áudios, permitindo o registro de transações por fala.</li>
-                <li><strong>Visualização:</strong> Geração de gráficos automáticos de saúde financeira diretamente no chat.</li>
-            </ol>
+            <h2>Estado Atual</h2>
+            <p>O bot está em produção e funcionando. Os comandos disponíveis hoje são <code>/gastar</code>, <code>/ganhar</code> e <code>/extrato</code>, cobrindo o fluxo básico de controle financeiro. O registro acontece no momento da transação, que é quando o controle financeiro realmente funciona.</p>
+
+            <h2>Infraestrutura</h2>
+            <p>O Plin roda num notebook antigo reutilizado como servidor doméstico com CasaOS. O bot é containerizado com Docker, o que garante que qualquer atualização possa ser feita sem derrubar o serviço. O banco de dados é SQLite gerenciado via SQLAlchemy, priorizando portabilidade. Os dados financeiros ficam inteiramente sob controle próprio, sem depender de nenhum serviço externo.</p>
+            <p>Manter um serviço rodando continuamente em hardware próprio ensina coisas que nenhuma VPS ensina: gerenciamento de energia, rede local, reinicialização automática de containers e monitoramento básico.</p>
+
+            <h2>Próximos Passos</h2>
+            <p>A próxima versão vai substituir os comandos fixos por linguagem natural. Em vez de <code>/gastar 40 pizza</code>, o usuário vai poder escrever "gastei 40 reais com pizza hoje" e o bot vai entender. Depois disso, geração de gráficos de saúde financeira diretamente no chat.</p>
 
             <div class="project-video-container">
                 <video autoplay loop muted playsinline>
                     <source src="../assets/img/plin-bot/execucao.mp4" type="video/mp4">
                     Seu navegador não suporta vídeos.
                 </video>
-                <p class="grid-caption">Demonstração da execução do Plin Bot.</p>
+                <p class="grid-caption">Demonstração do Plin Bot em funcionamento.</p>
             </div>
             <br>
             <a href="https://github.com/Dom1ng0s/Plin" class="btn" target="_blank">Ver Código no GitHub</a>

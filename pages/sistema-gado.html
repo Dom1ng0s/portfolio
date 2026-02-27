@@ -17,7 +17,7 @@
         
         <div class="project-header">
             <h1>Sistema de Gestão de Gado (SGG)</h1>
-            <p class="role">ERP Zootécnico High-Performance</p>
+            <p class="role">ERP Zootécnico com arquitetura Database-First</p>
             <div class="tech-list">
                 <span class="tag">Python 3.10</span> 
                 <span class="tag">Flask</span> 
@@ -27,17 +27,18 @@
         </div>
 
         <div class="project-content">
-            <h2>O Desafio</h2>
-            <p>O cálculo de indicadores zootécnicos, como o <strong>GMD (Ganho Médio Diário)</strong>, exige o processamento de milhares de registros históricos de pesagens. Em arquiteturas tradicionais, carregar esses dados para a memória da aplicação (Python) gera latência inaceitável (Big O linear ou quadrático) conforme o rebanho escala.</p>
+            <h2>O Problema</h2>
+            <p>Produtores rurais tomam decisões sobre animais que valem milhares de reais com base em planilhas desconexas ou intuição. Saber o Ganho Médio Diário de um boi, cruzar isso com o custo de ração e o preço atual da arroba são operações que, sem um sistema, consomem horas e ainda geram erros.</p>
+            <p>O desafio técnico foi escala: calcular o <strong>GMD (Ganho Médio Diário)</strong> exige cruzar o histórico completo de pesagens de cada animal. Em arquiteturas convencionais, isso significa carregar milhares de registros para a memória da aplicação. Conforme o rebanho cresce, a latência cresce junto.</p>
 
-            <h2>A Engenharia: "Database-First"</h2>
-            <p>Para garantir performance em escala, desenhei uma arquitetura onde a inteligência reside no Banco de Dados. O Python atua como um orquestrador leve, enquanto o MySQL executa o trabalho pesado.</p>
+            <h2>A Decisão de Arquitetura: Database-First</h2>
+            <p>A solução foi mover a inteligência para onde os dados já estão. Em vez de trazer os dados para o Python calcular, o MySQL faz o trabalho pesado dentro do banco e entrega apenas o resultado. O Python atua como orquestrador leve, não como motor de cálculo.</p>
+            <p>Essa decisão transforma um problema de escala num problema resolvido: não importa se o rebanho tem 100 ou 10.000 animais, a consulta retorna no mesmo tempo.</p>
 
             <h3>1. Ecossistema Integrado</h3>
-            <img src="../assets/img/sistema-gado/financeiro.png" alt="Dashboard Financeiro" class="project-img">
-            <p>O painel financeiro não é isolado. Ele consome dados de cotação da arroba em tempo real através da integração com o microserviço <strong>Gado-Scraper</strong>, garantindo que o valuation do rebanho esteja sempre atualizado com o mercado.</p>
+            <p>O painel financeiro não opera isolado. Ele consome cotações da arroba em tempo real via integração com o <strong><a href="gado-scraper.html">Gado-Scraper</a></strong>, garantindo que o valuation do rebanho acompanhe o mercado sem nenhuma entrada manual.</p>
 
-            <h3>2. Otimização via SQL Views</h3>
+            <h3>2. Views SQL como camada de lógica</h3>
             
             <div class="duo-grid">
                 <div>
@@ -50,14 +51,14 @@
                 </div>
             </div>
 
-            <p>Ao invés de loops complexos no backend, implementei Views SQL estratégicas. A View <code>v_fluxo_caixa</code> processa entradas e saídas diretamente no banco, entregando o resultado instantaneamente.</p>
+            <p>Em vez de loops no backend, cada cálculo complexo vive numa View SQL. A <code>v_fluxo_caixa</code> processa entradas e saídas diretamente no banco. O Python só busca o resultado pronto.</p>
 
             <h3>3. Analytics e Rebanho</h3>
             <img src="../assets/img/sistema-gado/rebanho.png" alt="Analytics do Rebanho" class="project-img">
             <p>Gráficos de distribuição de categorias e peso do rebanho em tempo real, utilizando índices otimizados para consultas rápidas.</p>
 
-            <h3>4. Monitoramento Individual (GMD)</h3>
-            <p>O cálculo de Ganho Médio Diário exige cruzar a primeira e a última pesagem de cada animal. A View <code>v_gmd_analitico</code> resolve isso no banco.</p>
+            <h3>4. Monitoramento Individual por Animal</h3>
+            <p>O GMD exige cruzar a primeira e a última pesagem de cada animal no histórico. A <code>v_gmd_analitico</code> resolve isso inteiramente no banco, entregando o indicador pronto para exibição sem nenhum processamento no Python.</p>
 
             <div class="duo-grid">
                 <div>
@@ -69,6 +70,9 @@
                     <p class="grid-caption">Frontend: Dados Zootécnicos</p>
                 </div>
             </div>
+
+            <h2>Status</h2>
+            <p>O sistema está validado com mais de 100 animais em contas de teste e aguarda implantação em produção, pendente da aquisição dos brincos de identificação para o rebanho real. A infraestrutura está pronta.</p>
 
             <br>
             <a href="https://github.com/Dom1ng0s/sistema_gado" class="btn" target="_blank">Ver Código no GitHub</a>
