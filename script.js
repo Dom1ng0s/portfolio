@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector('.projects-container');
     
     if (container) {
-        const intervalTime = 3000; 
+        const intervalTime = 5000; 
         let scrollInterval;
 
         const autoScroll = () => {

@@ -1,3 +1,39 @@
+
+/* --- HERO ACTIONS (dois botões) --- */
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* --- BOTÃO SECUNDÁRIO --- */
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+.btn-secondary:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- GITHUB LINK NOS CARDS --- */
+.github-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    transition: opacity 0.2s, transform 0.2s;
+}
+.github-link:hover {
+    opacity: 0.7;
+    transform: translateX(3px);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;700&display=swap');
 :root {
     /* Paleta Dark Mode Moderna */

@@ -3,15 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Davi Domingos: Desenvolvedor Backend, Python e C. Estudante de Ciência da Computação na UFAL.">
-    <title>Davi Domingos | Backend Developer & CS Student</title>
+
+    <!-- SEO Primary -->
+    <title>Davi Domingos | Backend Developer · Python · Flask · Docker</title>
+    <meta name="description" content="Desenvolvedor Backend Python com foco em sistemas de dados para o agronegócio. Projetos com Flask, MySQL, Docker e IA. Estudante de Ciência da Computação na UFAL. Buscando estágio.">
+    <meta name="keywords" content="desenvolvedor backend, Python, Flask, Docker, MySQL, estágio, UFAL, agronegócio, ETL, IA, Recife">
+    <meta name="author" content="Davi Domingos de Oliveira">
+    <link rel="canonical" href="https://davioliveira.is-a.dev/">
+
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davioliveira.is-a.dev/">
+    <meta property="og:title" content="Davi Domingos · Backend Developer">
+    <meta property="og:description" content="Sistemas que monitoram 33 praças pecuárias e reduzem horas de análise para minutos. Backend Python com Flask, Docker e IA.">
+    <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Davi Domingos · Portfólio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Davi Domingos · Backend Developer">
+    <meta name="twitter:description" content="Sistemas que monitoram 33 praças pecuárias e reduzem horas de análise para minutos.">
+    <meta name="twitter:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
+
+    <!-- Structured Data (Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Davi Domingos de Oliveira",
+      "url": "https://davioliveira.is-a.dev",
+      "email": "odomingosdavi@gmail.com",
+      "jobTitle": "Backend Developer",
+      "description": "Desenvolvedor Backend Python especializado em sistemas de dados para o agronegócio.",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidade Federal de Alagoas",
+        "sameAs": "https://www.ufal.edu.br"
+      },
+      "sameAs": [
+        "https://github.com/Dom1ng0s",
+        "https://www.linkedin.com/in/davidomingosdeoliveira/"
+      ],
+      "knowsAbout": ["Python", "Flask", "Docker", "MySQL", "ETL", "Machine Learning", "Agronegócio"]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">          
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/img/logonobg2.png" type="image/png">
-
 </head>
 <body>
 
@@ -28,17 +70,20 @@
     <section class="hero container">
         <div class="hero-text">
             <h1>Olá, sou <br><span class="typewriter">Davi Domingos de Oliveira</span></h1>
-            <span class="role">Computer Science Student @ UFAL</span>
+            <span class="role">Backend Developer · Python · UFAL</span>
             <p>
                 Transformo dados do agronegócio em decisões.<br>
                 Sistemas que já monitoram 33 praças pecuárias e reduzem horas de análise para minutos.<br>
-                De criptografia RSA a automações com IA, construo software completo do algoritmo ao deploy.
+                De criptografia RSA a automações com IA — construo software do algoritmo ao deploy.
             </p>
-            <a href="#projects" class="btn">Ver meus projetos</a>
+            <div class="hero-actions">
+                <a href="#projects" class="btn">Ver meus projetos</a>
+                <a href="mailto:odomingosdavi@gmail.com" class="btn btn-secondary">Entre em contato</a>
+            </div>
         </div>
         
         <div class="hero-img">
-            <img src="assets/img/profile.jpg" alt="Foto de Davi Domingos">
+            <img src="assets/img/profile.jpg" alt="Foto de Davi Domingos de Oliveira, desenvolvedor backend">
         </div>
     </section>
 
@@ -119,48 +164,62 @@
         
         <div class="projects-container">
             
-            <a href="pages/sistema-gado.html" class="card">
+            <div class="card" onclick="window.location='pages/sistema-gado.html'" style="cursor:pointer">
                 <h3>Sistema de Gestão de Gado</h3>
                 <p>Produtores rurais perdiam horas cruzando planilhas para entender o próprio rebanho. Construí um ERP que unifica dados financeiros e zootécnicos em tempo real, reduzindo análise de horas para minutos.</p>
                 <div>
                     <span class="tag">Flask</span> <span class="tag">MySQL</span> <span class="tag">MVC</span>
                 </div>
-            </a>
+                <a href="https://github.com/Dom1ng0s/sistema_gado" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
 
-            <a href="pages/polymorph.html" class="card">
+            <div class="card" onclick="window.location='pages/polymorph.html'" style="cursor:pointer">
                 <h3>Polymorph AI</h3>
                 <p>A maioria dos currículos é rejeitada por filtros automáticos antes de chegar em humanos. Construí uma CLI que usa IA para reescrever o currículo inteiro no vocabulário exato da vaga, tudo em menos de 30 segundos.</p>
                 <div>
                     <span class="tag">Integração de LLM</span> <span class="tag">Gemini AI</span> <span class="tag">CLI</span>
                 </div>
-            </a>
+                <a href="https://github.com/Dom1ng0s/polymorph" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
 
-            <a href="pages/gado-scraper.html" class="card">
+            <div class="card" onclick="window.location='pages/gado-scraper.html'" style="cursor:pointer">
                 <h3>Gado-Scraper</h3>
                 <p>Cotações pecuárias estavam espalhadas em 33 fontes diferentes, sem agregação. Automatizei a coleta diária das principais praças do Brasil num pipeline que roda sem custo via GitHub Actions e alimenta o ERP com dados em tempo real.</p>
                 <div>
-                    <span class="tag">ETL</span> <span class="tag">GitHub Actions</span><span class="tag">Data Pipeline</span>
+                    <span class="tag">ETL</span> <span class="tag">GitHub Actions</span> <span class="tag">Data Pipeline</span>
                 </div>
-            </a>
+                <a href="https://github.com/Dom1ng0s/Gado-Scraper" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
 
-            <a href="pages/rsa-criptografia.html" class="card">
+            <div class="card" onclick="window.location='pages/flappy-bird.html'" style="cursor:pointer">
+                <h3>Flappy Bird Clone</h3>
+                <p>Clone do clássico jogo desenvolvido como parte da introdução a C# e Unity do Laboratório TOCA da UFAL. O foco principal foi a aplicação prática de física 2D, instanciação de objetos e gerenciamento de estados do jogo.</p>
+                <div>
+                    <span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Game Dev</span>
+                </div>
+                <a href="https://github.com/Dom1ng0s/Flappy-Bird" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
+
+            <div class="card" onclick="window.location='pages/rsa-criptografia.html'" style="cursor:pointer">
                 <h3>RSA Implementation</h3>
                 <p>Toda conexão HTTPS depende de criptografia assimétrica, mas poucos desenvolvedores entendem o que acontece por baixo. Implementei o RSA do zero, sem bibliotecas: geração de primos, exponenciação modular e o algoritmo de Euler estendido.</p>
                 <div>
-                    <span class="tag">Cibersegurança</span> <span class="tag">Criptografia</span><span class="tag">Algoritmos</span>
+                    <span class="tag">Cibersegurança</span> <span class="tag">Criptografia</span> <span class="tag">Algoritmos</span>
                 </div>
-            </a>
+                <a href="https://github.com/Dom1ng0s/RSA-Criptografia" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
 
-            <a href="pages/plin-bot.html" class="card">
+            <div class="card" onclick="window.location='pages/plin-bot.html'" style="cursor:pointer">
                 <h3>Plin Bot</h3>
                 <p>Aplicativos de finanças têm telas demais para quem só quer registrar um gasto rápido. Construí um bot de Telegram que captura despesas direto no chat, roda em self-hosting via Docker e está evoluindo para entender linguagem natural.</p>
                 <div>
-                    <span class="tag">Python</span> 
-                    <span class="tag">Docker</span> 
+                    <span class="tag">Python</span>
+                    <span class="tag">Docker</span>
                     <span class="tag">SQLAlchemy</span>
                     <span class="tag">Self-Hosting</span>
                 </div>
-            </a>
+                <a href="https://github.com/Dom1ng0s/Plin" target="_blank" class="github-link" onclick="event.stopPropagation()">Ver no GitHub →</a>
+            </div>
         </div>
     </section>
 
@@ -185,10 +244,10 @@
             </div>
 
             <div class="card">
-                <h3>Pesquisador no Projeto Loodus (TOCA/UFAL)</h3>
-                <p>Desenvolvo o Loodus no Laboratório TOCA da UFAL: um app gamificado que ensina Libras para crianças surdas através de minijogos. É o tipo de problema que me fez escolher Ciência da Computação, impacto direto em acessibilidade e inclusão educacional.</p>
+                <h3>Pesquisador · Laboratório TOCA/UFAL</h3>
+                <p>Desenvolvo o <strong>Loodus</strong> no Laboratório de Tecnologias para Acessibilidade (TOCA/UFAL): um app gamificado que ensina Libras para crianças surdas através de minijogos interativos. Pesquisa aplicada com impacto direto em inclusão educacional e acessibilidade.</p>
                 <div>
-                    <span class="tag">Impacto Social</span> <span class="tag">Acessibilidade</span> <span class="tag">Gamificação</span>
+                    <span class="tag">Pesquisa Aplicada</span> <span class="tag">Acessibilidade</span> <span class="tag">Gamificação</span>
                 </div>
             </div>
         </div>
@@ -229,22 +288,14 @@
         
         <div class="contact-wrapper">
             <p>
-                Busco estágio ou iniciação científica onde possa construir software com impacto mensurável.<br>
-                Se você tem um problema real para resolver, seja no agro, em acessibilidade ou em qualquer outra área, quero ouvir sobre ele.
+                Busco estágio em desenvolvimento backend onde possa construir software com impacto mensurável.<br>
+                Respondo em até 24h. Inglês fluente para equipes internacionais.
             </p>
             
             <div class="contact-actions">
                 <a href="mailto:odomingosdavi@gmail.com" class="btn">odomingosdavi@gmail.com</a>
-                <a href="https://www.linkedin.com/in/davidomingosdeoliveira/" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/Dom1ng0s" target="_blank" class="btn">GitHub</a>
+                <a href="https://www.linkedin.com/in/davidomingosdeoliveira/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/Dom1ng0s" target="_blank" class="btn btn-secondary">GitHub</a>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Davi Domingos de Oliveira.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    </section

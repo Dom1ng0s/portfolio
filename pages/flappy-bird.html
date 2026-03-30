@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird Clone | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../assets/img/logonobg2.png" type="image/png">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Flappy Bird Clone </h1>
+            <p class="role">Desenvolvimento de Jogos 2D com Unity e C#</p>
+            <div class="tech-list">
+                <span class="tag">Unity (2D URP)</span> 
+                <span class="tag">C#</span> 
+                <span class="tag">Game Dev</span>
+                <span class="tag">Física 2D</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+
+            <h2>Sobre o Projeto</h2>
+            <p>Este projeto é um clone do clássico jogo Flappy Bird, desenvolvido como parte da introdução a C# e Unity do Laboratório TOCA da UFAL.</p>
+            <p>O foco principal do desenvolvimento foi a aplicação prática de conceitos fundamentais da engine, saindo da teoria e construindo uma mecânica de jogo funcional do zero.</p>
+
+            <h2>Mecânicas e Estrutura</h2>
+            <p>A arquitetura do projeto foi dividida para isolar responsabilidades e facilitar a manutenção. O desenvolvimento envolveu a manipulação de física 2D com <code>Rigidbodies</code> e <code>Colliders</code> para o controle do pássaro e detecção exata de impactos.</p>
+            <p>A geração dos obstáculos (canos) utiliza um sistema de instanciação dinâmica (spawners), criando um fluxo contínuo e aleatório de desafios em diferentes alturas. Além disso, o gerenciamento de estados do jogo garante a contagem de pontos em tempo real e a transição correta para a condição de Game Over.</p>
+
+            <h2>Demonstração</h2>
+            <div class="project-video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="../assets/img/Flappy-Bird/execucao.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+                <p class="grid-caption">Demonstração do Flappy Bird Clone em funcionamento.</p>
+            </div>
+
+            <br>
+            <a href="https://github.com/Dom1ng0s/Flappy-Bird" class="btn" target="_blank">Ver Repositório</a>
+        </div>
+    </main>
+    
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>
