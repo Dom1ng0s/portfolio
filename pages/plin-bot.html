@@ -22,6 +22,7 @@
             <p class="role">Bot funcional com self-hosting em homelab próprio</p>
             <div class="tech-list">
                 <span class="tag">Python</span> 
+                <span class="tag">spaCy (NLP)</span>
                 <span class="tag">SQLAlchemy</span> 
                 <span class="tag">Docker</span>
                 <span class="tag">Telegram API</span>
@@ -34,15 +35,15 @@
             <h2>O Problema</h2>
             <p>Aplicativos de finanças pessoais têm telas demais para quem só quer registrar um gasto no momento em que ele acontece. O Plin resolve isso de forma direta: o usuário registra entradas e saídas pelo Telegram, sem abrir nenhum app separado.</p>
 
-            <h2>Estado Atual</h2>
-            <p>O bot está em produção e funcionando. Os comandos disponíveis hoje são <code>/gastar</code>, <code>/ganhar</code> e <code>/extrato</code>, cobrindo o fluxo básico de controle financeiro. O registro acontece no momento da transação, que é quando o controle financeiro realmente funciona.</p>
+            <h2>Estado Atual e Processamento de Linguagem Natural (NLP)</h2>
+            <p>O bot está em produção e conta com um motor de extração de entidades baseado em NLP (via spaCy). O usuário registra transações através de linguagem natural livre. Ao enviar mensagens como "gastei 40 reais com pizza" ou "recebi 200 de freela", o sistema interpreta o contexto, extrai o valor numérico, define a categoria da transação e classifica a operação (receita ou despesa) sem a necessidade de comandos formatados rígidos.</p>
 
             <h2>Infraestrutura</h2>
             <p>O Plin roda num notebook antigo reutilizado como servidor doméstico com CasaOS. O bot é containerizado com Docker, o que garante que qualquer atualização possa ser feita sem derrubar o serviço. O banco de dados é SQLite gerenciado via SQLAlchemy, priorizando portabilidade. Os dados financeiros ficam inteiramente sob controle próprio, sem depender de nenhum serviço externo.</p>
             <p>Manter um serviço rodando continuamente em hardware próprio ensina coisas que nenhuma VPS ensina: gerenciamento de energia, rede local, reinicialização automática de containers e monitoramento básico.</p>
 
             <h2>Próximos Passos</h2>
-            <p>A próxima versão vai substituir os comandos fixos por linguagem natural. Em vez de <code>/gastar 40 pizza</code>, o usuário vai poder escrever "gastei 40 reais com pizza hoje" e o bot vai entender. Depois disso, geração de gráficos de saúde financeira diretamente no chat.</p>
+            <p>Geração de gráficos de saúde financeira com Matplotlib diretamente no chat, criação de alertas para limite de gastos por categoria e funcionalidade para exportação do extrato mensal.</p>
 
             <div class="project-video-container">
                 <video autoplay loop muted playsinline>
