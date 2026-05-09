@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Suplementação | Davi Domingos</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../assets/img/logonobg2.png" type="image/png">
+    <style>
+        .config-section {
+            background: #151515;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+        }
+
+        .config-section h3 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .form-group input {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+        }
+
+        /* Cor do placeholder para ficar com cara de dica */
+        .form-group input::placeholder {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            background: #252525;
+        }
+
+        .results-dashboard {
+            margin-top: 25px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+            margin-top: 10px;
+            padding-bottom: 0;
+        }
+
+        .result-label { color: #a0a0a0; }
+        .result-value { font-family: 'Fira Code', monospace; font-weight: 500; }
+        .total-lucro { font-size: 1.3rem; font-weight: 700; }
+
+        /* --- LÓGICA DE CORES DA ABA LATERAL E TEXTO --- */
+        .card-estrategia {
+            border-left: 4px solid #333; 
+            transition: border-color 0.4s ease;
+        }
+        
+        .card-winner { border-left-color: #10b981 !important; } 
+        .card-loss { border-left-color: #ef4444 !important; }   
+
+        .text-profit { color: #10b981; } 
+        .text-loss { color: #ef4444; }   
+        .text-neutral { color: #fff; }   
+    </style>
+</head>
+<body>
+    <header class="container">
+        <div class="logo">davioliveira.is-a.dev</div>
+        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Voltar</a>
+        
+        <div class="project-header">
+            <h1>Simulador de Engorda: Proteinado vs. Sal Mineral</h1>
+            <p class="role">Comparador financeiro dinâmico e interativo em tempo real</p>
+            <div class="tech-list">
+                <span class="tag">JavaScript Engine</span> 
+                <span class="tag">Modelagem Financeira</span>
+                <span class="tag">UI/UX Responsiva</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+            
+            <div class="config-section">
+                <h3>Dados do Rebanho e Propriedade</h3>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Total da Fazenda (Cab.)</label>
+                        <input type="text" inputmode="decimal" id="g_rebanho_total" placeholder="Ex: 1000">
+                    </div>
+                    <div class="form-group">
+                        <label>Lote Simulado (Cab.)</label>
+                        <input type="text" inputmode="decimal" id="g_rebanho_sim" placeholder="Ex: 100">
+                    </div>
+                    <div class="form-group">
+                        <label>Peso Inicial (kg)</label>
+                        <input type="text" inputmode="decimal" id="g_peso_ini" placeholder="Ex: 360">
+                    </div>
+                    <div class="form-group">
+                        <label>Peso Final (kg)</label>
+                        <input type="text" inputmode="decimal" id="g_peso_fin" placeholder="Ex: 540">
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">Dados de Mercado</h3>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Preço @ Compra (R$)</label>
+                        <input type="text" inputmode="decimal" id="g_arroba_compra" placeholder="Ex: 230,00">
+                    </div>
+                    <div class="form-group">
+                        <label>Preço @ Venda (R$)</label>
+                        <input type="text" inputmode="decimal" id="g_arroba_venda" placeholder="Ex: 245,00">
+                    </div>
+                    <div class="form-group">
+                        <label>Custo Fixo Mensal (R$)</label>
+                        <input type="text" inputmode="decimal" id="g_custo_fixo" placeholder="Ex: 15000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="duo-grid">
+                
+                <div class="card card-estrategia" id="card_p">
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Estratégia: Proteinado</h3>
+                    <div class="input-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <label>GMD Projetado (kg/dia)</label>
+                            <input type="text" inputmode="decimal" id="p_gmd" placeholder="Ex: 0,85">
+                        </div>
+                        <div class="form-group">
+                            <label>Consumo Estimado (% PV)</label>
+                            <input type="text" inputmode="decimal" id="p_taxa" placeholder="Ex: 0,1">
+                        </div>
+                        <div class="form-group">
+                            <label>Preço Suplemento (R$/kg)</label>
+                            <input type="text" inputmode="decimal" id="p_preco" placeholder="Ex: 2,10">
+                        </div>
+                    </div>
+
+                    <div class="results-dashboard">
+                        <div class="result-row">
+                            <span class="result-label">Duração do Ciclo</span>
+                            <span class="result-value" id="res_p_tempo">--</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Custo Alimentar / Cab.</span>
+                            <span class="result-value" id="res_p_custo_alim">--</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Rateio Custo Fixo / Cab.</span>
+                            <span class="result-value" id="res_p_custo_fixo">--</span>
+                        </div>
+                        <div class="result-row" style="margin-top: 15px;">
+                            <span class="result-label" style="color: #fff;">Lucro Total do Lote</span>
+                            <span class="result-value total-lucro text-neutral" id="res_p_lucro_lote">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-estrategia" id="card_s">
+                    <h3 style="color: #a855f7; margin-bottom: 20px;">Estratégia: Sal Mineral</h3>
+                    <div class="input-grid" style="grid-template-columns: 1fr;">
+                        <div class="form-group">
+                            <label>GMD Projetado (kg/dia)</label>
+                            <input type="text" inputmode="decimal" id="s_gmd" placeholder="Ex: 0,50">
+                        </div>
+                        <div class="form-group">
+                            <label>Consumo Estimado (% PV)</label>
+                            <input type="text" inputmode="decimal" id="s_taxa" placeholder="Ex: 0,03">
+                        </div>
+                        <div class="form-group">
+                            <label>Preço Suplemento (R$/kg)</label>
+                            <input type="text" inputmode="decimal" id="s_preco" placeholder="Ex: 3,50">
+                        </div>
+                    </div>
+
+                    <div class="results-dashboard">
+                        <div class="result-row">
+                            <span class="result-label">Duração do Ciclo</span>
+                            <span class="result-value" id="res_s_tempo">--</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Custo Alimentar / Cab.</span>
+                            <span class="result-value" id="res_s_custo_alim">--</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Rateio Custo Fixo / Cab.</span>
+                            <span class="result-value" id="res_s_custo_fixo">--</span>
+                        </div>
+                        <div class="result-row" style="margin-top: 15px;">
+                            <span class="result-label" style="color: #fff;">Lucro Total do Lote</span>
+                            <span class="result-value total-lucro text-neutral" id="res_s_lucro_lote">--</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+
+    <script>
+        const formatMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+        const formatMeses = (num) => `${num.toFixed(1)} meses`;
+
+        // Função auxiliar para converter strings com vírgula ou ponto em Float matemático
+        function getFloatValue(id) {
+            let str = document.getElementById(id).value;
+            if (!str) return 0;
+            // Substitui vírgula por ponto para o JavaScript entender
+            str = str.replace(',', '.');
+            let val = parseFloat(str);
+            return isNaN(val) ? 0 : val;
+        }
+
+        function calcularMotorLogico(gmd, taxa_pv, preco_kg, x, y, p0, pf, cf, margemBruta) {
+            if(!gmd || !taxa_pv || !preco_kg || !x || !y || !p0 || !pf || p0 >= pf) return null;
+
+            let diasTotais = (pf - p0) / gmd;
+            let mesesTotais = diasTotais / 30.0;
+            let fracaoRebanho = y / x;
+
+            let rateioCustoFixoLote = cf * fracaoRebanho * mesesTotais;
+            let rateioCustoFixoCabeca = rateioCustoFixoLote / y;
+
+            let diasRestantes = diasTotais;
+            let pesoAtual = p0;
+            let consumoTotalKg = 0;
+
+            while (diasRestantes > 0) {
+                let diasMes = Math.min(30, diasRestantes);
+                let consumoDiario = pesoAtual * (taxa_pv / 100.0);
+                consumoTotalKg += consumoDiario * diasMes;
+                pesoAtual += (gmd * diasMes);
+                diasRestantes -= diasMes;
+            }
+
+            let custoAlimentacao = consumoTotalKg * preco_kg;
+            let lucroCabeca = margemBruta - custoAlimentacao - rateioCustoFixoCabeca;
+            let lucroLote = lucroCabeca * y;
+
+            return { mesesTotais, custoAlimentacao, rateioCustoFixoCabeca, lucroLote };
+        }
+
+        function limparCard(prefix) {
+            document.getElementById(`res_${prefix}_tempo`).innerText = "--";
+            document.getElementById(`res_${prefix}_custo_alim`).innerText = "--";
+            document.getElementById(`res_${prefix}_custo_fixo`).innerText = "--";
+            document.getElementById(`res_${prefix}_lucro_lote`).innerText = "--";
+        }
+
+        function preencherCard(prefix, res) {
+            document.getElementById(`res_${prefix}_tempo`).innerText = formatMeses(res.mesesTotais);
+            document.getElementById(`res_${prefix}_custo_alim`).innerText = formatMoeda.format(res.custoAlimentacao);
+            document.getElementById(`res_${prefix}_custo_fixo`).innerText = formatMoeda.format(res.rateioCustoFixoCabeca);
+            document.getElementById(`res_${prefix}_lucro_lote`).innerText = formatMoeda.format(res.lucroLote);
+        }
+
+        function aplicarEstiloAba(prefix, lucroLote, isWinner) {
+            const card = document.getElementById(`card_${prefix}`);
+            const texto = document.getElementById(`res_${prefix}_lucro_lote`);
+            
+            card.classList.remove('card-winner', 'card-loss');
+            texto.classList.remove('text-profit', 'text-loss', 'text-neutral');
+
+            if (lucroLote < 0) {
+                card.classList.add('card-loss');
+                texto.classList.add('text-loss');
+            } else if (isWinner) {
+                card.classList.add('card-winner');
+                texto.classList.add('text-profit');
+            } else {
+                texto.classList.add('text-neutral');
+            }
+        }
+
+        function calcularSimulacao() {
+            // Utilizando o helper para ler pontos ou vírgulas sem quebrar
+            const x = getFloatValue('g_rebanho_total');
+            const y = getFloatValue('g_rebanho_sim');
+            const p0 = getFloatValue('g_peso_ini');
+            const pf = getFloatValue('g_peso_fin');
+            const pac = getFloatValue('g_arroba_compra');
+            const pav = getFloatValue('g_arroba_venda');
+            const cf = getFloatValue('g_custo_fixo');
+
+            const precoCompra = (p0 / 30) * pac;
+            const precoVenda = (pf / 30) * pav;
+            const margemBruta = precoVenda - precoCompra;
+
+            const p_gmd = getFloatValue('p_gmd');
+            const p_taxa = getFloatValue('p_taxa');
+            const p_preco = getFloatValue('p_preco');
+
+            const s_gmd = getFloatValue('s_gmd');
+            const s_taxa = getFloatValue('s_taxa');
+            const s_preco = getFloatValue('s_preco');
+
+            const resP = calcularMotorLogico(p_gmd, p_taxa, p_preco, x, y, p0, pf, cf, margemBruta);
+            const resS = calcularMotorLogico(s_gmd, s_taxa, s_preco, x, y, p0, pf, cf, margemBruta);
+
+            if (resP) preencherCard('p', resP); else limparCard('p');
+            if (resS) preencherCard('s', resS); else limparCard('s');
+
+            let winP = false;
+            let winS = false;
+
+            if (resP && resS) {
+                if (resP.lucroLote > resS.lucroLote && resP.lucroLote >= 0) winP = true;
+                if (resS.lucroLote > resP.lucroLote && resS.lucroLote >= 0) winS = true;
+            } else if (resP && !resS) {
+                if (resP.lucroLote >= 0) winP = true;
+            } else if (!resP && resS) {
+                if (resS.lucroLote >= 0) winS = true;
+            }
+
+            if (resP) aplicarEstiloAba('p', resP.lucroLote, winP);
+            else document.getElementById('card_p').className = 'card card-estrategia'; 
+
+            if (resS) aplicarEstiloAba('s', resS.lucroLote, winS);
+            else document.getElementById('card_s').className = 'card card-estrategia'; 
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calcularSimulacao);
+        });
+
+        window.onload = calcularSimulacao;
+    </script>
+</body>
+</html>
