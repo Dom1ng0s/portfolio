@@ -46,12 +46,11 @@
     --border: rgba(255, 255, 255, 0.08);
     
     /* Espaçamentos */
-    --container-width: 1000px;
+    --container-width: 1900px;
     --radius: 12px;
 }
 
-/* Reset Básico */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+
 
 body {
     background-color: var(--bg-body);
