@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script>const t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plin Bot | Davi Domingos</title>
     <link rel="stylesheet" href="../style.css">
@@ -33,10 +34,10 @@
         <div class="project-content">
 
             <h2>O Problema</h2>
-            <p>Aplicativos de finanças pessoais têm telas demais para quem só quer registrar um gasto no momento em que ele acontece. O Plin resolve isso de forma direta: o usuário registra entradas e saídas pelo Telegram, sem abrir nenhum app separado.</p>
+            <p>Apps de finanças falham na adoção porque exigem logins, formulários e navegação entre telas — atrito demais para o momento em que o gasto acontece. O Plin elimina essa fricção: o usuário simplesmente manda uma mensagem no Telegram que já usa, e o bot registra, categoriza e confirma em segundos. A gestão financeira vira uma conversa de 5 segundos, sem abrir nenhum app novo.</p>
 
-            <h2>Estado Atual e Processamento de Linguagem Natural (NLP)</h2>
-            <p>O bot está em produção e conta com um motor de extração de entidades baseado em NLP (via spaCy). O usuário registra transações através de linguagem natural livre. Ao enviar mensagens como "gastei 40 reais com pizza" ou "recebi 200 de freela", o sistema interpreta o contexto, extrai o valor numérico, define a categoria da transação e classifica a operação (receita ou despesa) sem a necessidade de comandos formatados rígidos.</p>
+            <h2>Processamento de Linguagem Natural</h2>
+            <p>O bot usa spaCy (<code>pt_core_news_sm</code>) para lematização e regex para extração de valores monetários. A intenção — despesa ou receita — é classificada por lookup em listas de palavras-chave. Ao enviar "gastei 40 reais com pizza" ou "recebi 200 de freela", o sistema extrai o valor, define a categoria e registra sem nenhum comando rígido. O banco é multi-tenant por <code>user_id</code> do Telegram, com chave primária composta <code>(user_id, id_transacao_user)</code> garantindo IDs de extrato independentes por usuário sem expor PKs globais.</p>
 
             <h2>Infraestrutura</h2>
             <p>O Plin roda num notebook antigo reutilizado como servidor doméstico com CasaOS. O bot é containerizado com Docker, o que garante que qualquer atualização possa ser feita sem derrubar o serviço. O banco de dados é SQLite gerenciado via SQLAlchemy, priorizando portabilidade. Os dados financeiros ficam inteiramente sob controle próprio, sem depender de nenhum serviço externo.</p>
@@ -44,6 +45,9 @@
 
             <h2>Próximos Passos</h2>
             <p>Geração de gráficos de saúde financeira com Matplotlib diretamente no chat, criação de alertas para limite de gastos por categoria e funcionalidade para exportação do extrato mensal.</p>
+
+            <h2>O que eu faria diferente</h2>
+            <p>O SQLite funciona perfeitamente para uso pessoal, mas seria o primeiro gargalo ao escalar para múltiplos usuários ativos simultâneos — migraria para PostgreSQL. O Docker Compose atual torna essa mudança de uma linha no <code>docker-compose.yml</code>, o que foi uma decisão deliberada de design. Para o NLP, o modelo <code>pt_core_news_sm</code> do spaCy é leve mas perde cobertura em categorias financeiras de nicho (ex.: "gasolina", "freela", "Ifood") — um fine-tuning do modelo <code>md</code> com exemplos rotulados melhoraria significativamente o recall sem custo de infraestrutura adicional.</p>
 
             <div class="project-video-container">
                 <video autoplay loop muted playsinline>

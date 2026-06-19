@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script>const t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Comparador de Suplementação | Davi Domingos</title>
     <link rel="stylesheet" href="../style.css">
@@ -9,10 +10,10 @@
     <style>
         /* --- ESTILOS BASE --- */
         .config-section {
-            background: #151515;
+            background: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid var(--border);
             margin-bottom: 30px;
         }
 
@@ -22,7 +23,7 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 8px;
         }
 
@@ -35,15 +36,15 @@
         .form-group { display: flex; flex-direction: column; }
         .form-group label {
             font-size: 0.85rem;
-            color: #a0a0a0;
+            color: var(--text-muted);
             margin-bottom: 8px;
             font-family: 'Fira Code', monospace;
         }
 
         .form-group input {
-            background: #1e1e1e;
-            border: 1px solid #333;
-            color: #fff;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            color: var(--text-main);
             padding: 12px 15px;
             border-radius: 8px;
             font-size: 1rem;
@@ -51,17 +52,17 @@
             transition: all 0.3s ease;
         }
 
-        .form-group input::placeholder { color: #555; font-size: 0.85rem; }
+        .form-group input::placeholder { color: var(--text-muted); font-size: 0.85rem; }
         .form-group input:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            background: #252525;
+            background: var(--bg-card);
         }
 
         .results-dashboard {
             margin-top: 25px;
-            background: rgba(0,0,0,0.3);
+            background: var(--bg-body);
             border-radius: 8px;
             padding: 20px;
         }
@@ -71,30 +72,30 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--border);
             font-size: 0.95rem;
         }
         .result-row:last-child { border-bottom: none; margin-top: 10px; padding-bottom: 0; }
 
-        .result-label { color: #a0a0a0; }
+        .result-label { color: var(--text-muted); }
         .result-value { font-family: 'Fira Code', monospace; font-weight: 500; }
         .total-lucro { font-size: 1.3rem; font-weight: 700; }
 
-        .card-estrategia { border-left: 4px solid #333; transition: border-color 0.4s ease; }
-        .card-winner { border-left-color: #10b981 !important; } 
-        .card-loss { border-left-color: #ef4444 !important; }   
+        .card-estrategia { border-left: 4px solid var(--border); transition: border-color 0.4s ease; }
+        .card-winner { border-left-color: #10b981 !important; }
+        .card-loss { border-left-color: #ef4444 !important; }
 
-        .text-profit { color: #10b981; } 
-        .text-loss { color: #ef4444; }   
-        .text-neutral { color: #fff; }   
+        .text-profit { color: #10b981; }
+        .text-loss { color: #ef4444; }
+        .text-neutral { color: var(--text-main); }
 
         /* --- UI ESPECÍFICA PARA MOBILE --- */
         .mobile-tabs {
             display: none;
-            background: #111;
+            background: var(--bg-body);
             padding: 5px;
             border-radius: 12px;
-            border: 1px solid #333;
+            border: 1px solid var(--border);
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
@@ -114,9 +115,9 @@
         }
 
         .tab-btn.active {
-            background: #252525;
+            background: var(--bg-card);
             color: var(--accent);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .floating-bar {
@@ -127,10 +128,10 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 400px;
-            background: rgba(20, 20, 20, 0.85);
+            background: rgba(30, 41, 59, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid #333;
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 15px 25px;
             z-index: 1000;
@@ -139,9 +140,13 @@
             align-items: center;
             transition: border-color 0.4s ease;
         }
+        html[data-theme="light"] .floating-bar {
+            background: rgba(248, 250, 252, 0.95);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
-        .float-label { font-size: 0.75rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
-        .float-winner { font-size: 1rem; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px;}
+        .float-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+        .float-winner { font-size: 1rem; font-weight: bold; color: var(--text-main); display: flex; align-items: center; gap: 8px;}
         .float-value { font-size: 1.2rem; font-weight: bold; font-family: 'Fira Code', monospace; }
 
         @media (max-width: 768px) {
@@ -172,12 +177,27 @@
         
         <div class="project-header">
             <h1>Simulador de Engorda</h1>
-            <p class="role">Proteinado vs. Sal Mineral · Análise Financeira</p>
+            <p class="role">Proteinado vs. Sal Mineral · Análise Financeira em Tempo Real</p>
             <div class="tech-list">
-                <span class="tag">JavaScript</span> 
+                <span class="tag">JavaScript</span>
+                <span class="tag">Modelagem Matemática</span>
                 <span class="tag">Mobile-First</span>
-                <span class="tag">UI/UX</span>
             </div>
+        </div>
+
+        <div class="project-content" style="margin-bottom: 0; padding-bottom: 0;">
+            <h2>O Problema</h2>
+            <p>A decisão entre suplementar o gado com Proteinado ou Sal Mineral impacta diretamente o custo por cabeça e o lucro do lote — mas na prática, essa decisão era tomada sem nenhuma projeção financeira concreta. Produtores sabem o GMD esperado de cada estratégia, mas calcular o custo de alimentação acumulado (que varia com o peso do animal ao longo do ciclo), ratear os custos fixos da fazenda por fração do rebanho e comparar o lucro líquido final exigia uma planilha elaborada ou uma calculadora financeira.</p>
+
+            <h2>A Solução</h2>
+            <p>Uma calculadora web que executa o modelo financeiro completo em tempo real conforme o usuário digita. O motor lógico itera o ciclo mês a mês, recalculando o consumo de suplemento com base no peso corrente do animal — não uma média estática — e rateia o custo fixo mensal da fazenda proporcionalmente ao tamanho do lote simulado. O resultado é o lucro operacional projetado para cada estratégia, atualizado instantaneamente.</p>
+
+            <h2>Decisões de Arquitetura</h2>
+            <p><strong>Mobile-First com tabs e barra flutuante:</strong> a decisão de suplementação é tomada antes de iniciar o lote, muitas vezes num celular. No desktop, os dois cards de estratégia ficam lado a lado para comparação direta. No mobile, tabs separam "Dados da Fazenda" de "Simulação", e uma barra flutuante fixa no rodapé mostra a melhor opção e o lucro projetado sem que o usuário precise rolar — a informação mais importante está sempre visível no momento da decisão.</p>
+            <p><strong>Iteração mês a mês em vez de média:</strong> o consumo de suplemento é calculado como percentual do peso vivo (<code>% PV</code>), que cresce conforme o animal engorda. Usar uma média geraria erro sistemático. O loop mensal garante que o peso correto é usado em cada período do ciclo.</p>
+
+            <h2>O que eu faria diferente</h2>
+            <p>O motor de cálculo atual é client-side puro — nada é persistido. Se quisesse que o produtor salvasse e comparasse cenários ao longo do tempo (ex.: "como este lote ficou em março vs. agora?"), adicionaria um backend Flask com SQLite e autenticação via link do Telegram — integração natural com o <a href="plin-bot.html">Plin</a>, que já gerencia o <code>user_id</code> do Telegram como chave de identidade. O frontend JavaScript permaneceria idêntico; apenas o botão "Salvar Simulação" mandaria um POST para a API.</p>
         </div>
 
         <div class="mobile-tabs">
@@ -258,7 +278,7 @@
             <span class="float-winner" id="bar_name">N/A</span>
         </div>
         <div style="text-align: right;">
-            <span class="float-label" style="color:rgba(255,255,255,0.5)">Lucro Projetado</span>
+            <span class="float-label">Lucro Projetado</span>
             <span class="float-value" id="bar_profit" style="color: #fff;">--</span>
         </div>
     </div>

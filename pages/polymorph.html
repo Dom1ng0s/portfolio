@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script>const t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polymorph AI | Davi Domingos</title>
     <link rel="stylesheet" href="../style.css">
@@ -18,7 +19,7 @@
         
         <div class="project-header">
             <h1>Polymorph AI</h1>
-            <p class="role">CLI que eu construí para usar nas minhas próprias candidaturas</p>
+            <p class="role">CLI que eu construí e uso nas minhas próprias candidaturas — incluindo essa</p>
             <div class="tech-list">
                 <span class="tag">Google Gemini API</span> 
                 <span class="tag">Python (Typer)</span> 
@@ -34,8 +35,8 @@
             <p>Adaptar o currículo manualmente para cada vaga consumia tempo demais. Então construí uma ferramenta para fazer isso por mim.</p>
 
             <h2>A Solução</h2>
-            <p>O Polymorph é uma CLI que lê a descrição de uma vaga, analisa o currículo base em JSON e usa o Google Gemini para reescrever as experiências no vocabulário exato do recrutador. O resultado é um PDF profissional gerado em menos de 30 segundos, pronto para envio.</p>
-            <p>O currículo que você está avaliando agora passou pelo Polymorph.</p>
+            <p>O Polymorph é uma CLI que lê a descrição de uma vaga, analisa o currículo base em JSON e usa o Google Gemini 2.5 Flash para reordenar skills por relevância, reescrever o resumo profissional e adaptar as descrições de experiência e projetos — sem inventar informações, apenas reorganizando e enfatizando o que já existe. O resultado é um PDF profissional gerado em menos de 30 segundos via Playwright + Chromium headless.</p>
+            <p><strong>O currículo que você está avaliando agora passou pelo Polymorph.</strong></p>
 
             <h2>Pipeline de Execução</h2>
             <p>O processamento acontece em três estágios encadeados. Ao rodar <code>python polymorph.py apply</code>, o script captura o texto da vaga e envia um prompt estruturado para o Gemini Pro, que reordena skills e adapta o resumo profissional. O JSON retornado pela IA é injetado num template via Jinja2, mantendo separação total entre dados e design. Por fim, um navegador Chromium headless via Playwright renderiza o HTML e gera um PDF vetorial de alta fidelidade.</p>
@@ -49,6 +50,9 @@
             </ul>
 
             <img src="../assets/img/polymorph/arquitetura.png" alt="Arquitetura do Polymorph" class="project-img">
+
+            <h2>O que eu faria diferente</h2>
+            <p>O modo <code>batch</code> atual é síncrono e bloqueante — processa vagas uma a uma, travando o terminal. Para dezenas de candidaturas simultâneas, adicionaria uma fila assíncrona (Celery + Redis) com feedback de progresso em tempo real. O maior risco de design atual é a dependência de um único provider de LLM: renomear <code>gemini_client.py</code> para <code>llm_client.py</code> e abstrair a interface tornaria a troca de provider (Gemini → Claude → GPT) cirúrgica, sem tocar na lógica de prompt ou na geração do PDF.</p>
 
             <br>
             <a href="https://github.com/Dom1ng0s/polymorph" class="btn" target="_blank">Ver Código no GitHub</a>

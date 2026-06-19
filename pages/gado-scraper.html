@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script>const t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gado Scraper | Davi Domingos</title>
     <link rel="stylesheet" href="../style.css">
@@ -21,9 +22,9 @@
             <h1>Gado-Scraper</h1>
             <p class="role">Pipeline ETL com Git como banco de dados</p>
             <div class="tech-list">
-                <span class="tag">Python (BS4)</span> 
-                <span class="tag">GitHub Actions</span> 
-                <span class="tag">Cron Jobs</span>
+                <span class="tag">Python</span>
+                <span class="tag">pandas.read_html</span>
+                <span class="tag">GitHub Actions</span>
                 <span class="tag">Git Automation</span>
             </div>
         </div>
@@ -31,17 +32,30 @@
         <div class="project-content">
 
             <h2>O Problema</h2>
-            <p>Para que o <a href="sistema-gado.html">Sistema de Gestão de Gado</a> calculasse o valuation do rebanho com precisão, ele precisava de cotações atualizadas da arroba do boi e da novilha todos os dias. Inserir esses valores manualmente tornaria o ERP dependente de uma rotina humana, quebrando a proposta de automação do sistema.</p>
-            <p>A fonte de referência do mercado é a <strong>Scot Consultoria</strong>, que publica cotações diárias das 33 principais praças pecuárias do Brasil. O objetivo foi automatizar completamente essa coleta.</p>
+            <p>Para que o <a href="sistema-gado.html">Sistema de Gestão de Gado</a> calculasse o valuation do rebanho com precisão, ele precisava de cotações atualizadas da arroba do boi gordo e da novilha todos os dias. Inserir esses valores manualmente tornaria o ERP dependente de uma rotina humana, quebrando a proposta de automação.</p>
+            <p>A fonte de referência do mercado é a <strong>Scot Consultoria</strong>, que publica cotações diárias das <strong>33 principais praças pecuárias do Brasil</strong>. O problema: nenhuma API pública, tabelas sem formato padronizado, e cabeçalhos que mudam sem aviso. O objetivo foi automatizar completamente essa coleta com custo de infraestrutura zero.</p>
 
             <h2>A Decisão de Arquitetura: Git como Banco de Dados</h2>
             <p>Rodar um servidor VPS só para executar um script diário seria desperdício de infraestrutura e custo. A solução foi usar o GitHub Actions como runner gratuito e agendado, mas o detalhe mais interessante está na persistência dos dados.</p>
             <p>Em vez de um banco de dados convencional, o próprio repositório Git serve como armazenamento histórico. A cada execução, o robô commita o JSON atualizado de volta no repositório. O resultado é um histórico versionado de cotações, consultável via Raw URL pelo SGG, onde cada commit representa um dia de mercado.</p>
 
             <h2>Como Funciona</h2>
-            <p>O arquivo <code>atualizacao_diaria.yml</code> dispara o pipeline todos os dias em horário comercial. O script Python acessa o site da Scot Consultoria, trata eventuais erros de conexão e extrai os valores das 33 praças. O JSON resultante é commitado automaticamente no repositório, ficando disponível imediatamente para consumo pelo ERP.</p>
+            <p>O arquivo <code>atualizacao_diaria.yml</code> dispara o pipeline todos os dias às 09:00 UTC via cron. O scraper usa <code>pandas.read_html</code> ancorado na string <code>"Funrural"</code> para identificar a tabela alvo — essa âncora semântica torna o scraper resiliente a mudanças de cabeçalho. Retry automático com 3 tentativas e backoff de 5 segundos garante robustez contra falhas transitórias de rede. O JSON resultante é commitado automaticamente, ficando disponível via Raw URL para o ERP consumir em tempo real.</p>
+
+            <p>A decisão técnica mais importante do projeto está em duas linhas. Em vez de selecionar a tabela por índice de posição (frágil a qualquer mudança de layout), o scraper a localiza por conteúdo semântico:</p>
+
+            <pre><code># Localiza a tabela que contém "Funrural" — resiliente a mudanças de layout
+# Se o site mover ou adicionar tabelas, o pivot semântico ainda funciona
+tabelas = pd.read_html(StringIO(html), decimal=",", thousands=".", match="Funrural")
+
+# Erro explícito se o layout mudar — falha rápida em vez de dados silenciosamente errados
+# "Tabela com 'Funrural' não encontrada. O layout do site mudou?"</code></pre>
+            <p>Cada commit diário é um snapshot auditável das cotações daquele dia. O histórico completo pode ser reconstruído via <code>build_dataset.py</code>, que percorre o <code>git log</code> e reconstrói os CSVs acumulativos com deduplicação por <code>(data, praça)</code>.</p>
 
             <img src="../assets/img/gado-scraper/workflow.png" alt="Fluxo de Automação GitHub Actions" class="project-img">
+
+            <h2>O que eu faria diferente</h2>
+            <p>Git como banco de dados é elegante para esse volume, mas tem limites claros: consultas históricas exigem checkout de commits ou parsing do log, e não há suporte a queries relacionais. Se o escopo crescesse para múltiplas fontes de dados ou análises mais complexas, eu migraria a persistência para um banco de séries temporais como TimescaleDB, mantendo o GitHub Actions como runner. A âncora de scraping por string semântica em vez de posição de coluna foi a decisão mais valiosa do projeto — salvou retrabalho em pelo menos duas mudanças de layout do site-fonte.</p>
 
             <br>
             <a href="https://github.com/Dom1ng0s/Gado-Scraper" class="btn" target="_blank">Ver Repositório</a>
