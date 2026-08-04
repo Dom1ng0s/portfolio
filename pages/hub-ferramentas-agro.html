@@ -236,14 +236,18 @@
     <header class="container">
         <div class="logo">davioliveira.is-a.dev</div>
         <nav class="nav-links">
-            <a href="../index.html">← Home</a>
+            <a href="../index.html" data-i18n="nav.back">← Home</a>
+            <div class="lang-toggle">
+                <button class="lang-btn" data-lang="pt" onclick="switchLang('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+            </div>
         </nav>
     </header>
 
     <main class="container">
 
         <div class="hub-header">
-            <a href="../index.html" class="back-link">← Voltar</a>
+            <a href="../index.html" class="back-link" data-i18n="back.link">← Voltar</a>
             <h1>Ferramentas para o Agro</h1>
             <p>Calculadoras e dados de mercado para a pecuária. Tudo público, sem login — porque informação útil não deveria exigir cadastro.</p>
         </div>
@@ -349,6 +353,7 @@
     </main>
 
     <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../assets/js/i18n.js"></script>
     <script src="../script.js"></script>
     <script>
         const BASE = "https://raw.githubusercontent.com/dom1ng0s/gado-scraper/main";

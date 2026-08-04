@@ -8,16 +8,51 @@
 }
 
 /* --- BOTÃO SECUNDÁRIO --- */
-.btn-secondary {
+.btn.btn-secondary {
     background-color: transparent;
     border: 1px solid var(--accent);
     color: var(--accent);
 }
-.btn-secondary:hover {
+.btn.btn-secondary:hover {
     background-color: var(--accent);
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- BADGE DE DISPONIBILIDADE --- */
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+/* --- CREDENCIAIS DEMO --- */
+.demo-credentials {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: 'Fira Code', monospace;
+    opacity: 0.75;
+}
+
+/* --- APÊNDICE: EXPERIMENTOS DE APRENDIZADO --- */
+.learning-experiments .section-title {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+}
+.learning-experiments .card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
 }
 
 /* --- GITHUB LINK NOS CARDS --- */

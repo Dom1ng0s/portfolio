@@ -11,11 +11,17 @@
 <body>
     <header class="container">
         <div class="logo">davioliveira.is-a.dev</div>
-        <nav class="nav-links"><a href="../index.html">Voltar para Home</a></nav>
+        <nav class="nav-links">
+            <a href="../index.html" data-i18n="nav.back">← Home</a>
+            <div class="lang-toggle">
+                <button class="lang-btn" data-lang="pt" onclick="switchLang('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+            </div>
+        </nav>
     </header>
 
     <main class="container">
-        <a href="../index.html" class="back-link">← Voltar</a>
+        <a href="../index.html" class="back-link" data-i18n="back.link">← Voltar</a>
         
         <div class="project-header">
             <h1>Flappy Bird Clone </h1>
@@ -53,6 +59,7 @@
     </main>
     
     <footer><p>© 2026 Davi Domingos de Oliveira.</p></footer>
+    <script src="../assets/js/i18n.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

@@ -76,37 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* =============================================================
-       4. LANGUAGE TOGGLE (PT / EN) — only on pages with .lang-pt
-       ============================================================= */
-    if (document.querySelector('.lang-pt')) {
-        const langWrap = document.createElement('div');
-        langWrap.className = 'lang-toggle';
-        langWrap.innerHTML = '<button class="lang-btn" data-lang="pt">PT</button><button class="lang-btn" data-lang="en">EN</button>';
-
-        function applyLang(lang) {
-            document.querySelectorAll('.lang-pt').forEach(el => {
-                el.style.display = lang === 'pt' ? '' : 'none';
-            });
-            document.querySelectorAll('.lang-en').forEach(el => {
-                el.style.display = lang === 'en' ? '' : 'none';
-            });
-            langWrap.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
-
-        applyLang(localStorage.getItem('lang') || 'pt');
-
-        langWrap.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.dataset.lang;
-                localStorage.setItem('lang', lang);
-                applyLang(lang);
-            });
-        });
-
-        if (nav) nav.appendChild(langWrap);
-    }
 
 });
