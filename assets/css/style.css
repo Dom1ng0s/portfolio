@@ -239,3 +239,20 @@ section { padding: 72px 0; }
 
 .rastria-logo { display: flex; align-items: center; gap: 8px; margin-bottom: auto; padding-bottom: 32px; }
 .rastria-logo span { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: #fff; }
+
+/* ---------- Ajustes mobile ---------- */
+@media (max-width: 759px) {
+  html { scroll-padding-top: 116px; }
+  .site-header .container { flex-wrap: wrap; height: auto; padding-top: 12px; column-gap: 16px; row-gap: 0; }
+  .nav {
+    display: flex; order: 3; width: 100%; margin: 0;
+    gap: 4px; border-top: 1px solid var(--line); margin-top: 12px;
+  }
+  .nav a { flex: 1; text-align: center; padding: 12px 0; min-height: 44px; }
+}
+@media (max-width: 899px) {
+  .case-layout { gap: 40px; }
+  .aside { order: -1; }
+}
+.site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.site-footer .container { align-items: center; }
