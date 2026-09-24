@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plin · Estudo de caso · Davi Oliveira</title>
   <meta name="description" content="Plin: chatbot de finanças pessoais no Telegram com NLP em spaCy, SQLAlchemy e Docker.">
-  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/plin.html">
+  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/plin/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Plin · Estudo de caso">
   <meta property="og:description" content="Plin: chatbot de finanças pessoais no Telegram com NLP em spaCy, SQLAlchemy e Docker.">
-  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/plin.html">
+  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/plin/">
   <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#011936">
-  <link rel="icon" href="../hexagon-letter-d.svg" type="image/svg+xml">
+  <link rel="icon" href="../../hexagon-letter-d.svg" type="image/svg+xml">
   <script>
     (function(){var r=document.documentElement,l,t;try{l=localStorage.getItem('lang');t=localStorage.getItem('theme')}catch(e){}
     if(!l)l=(navigator.language||'pt').slice(0,2)==='pt'?'pt':'en';r.setAttribute('data-lang',l);r.lang=l==='en'?'en':'pt-BR';if(t)r.setAttribute('data-theme',t)})();
@@ -23,21 +23,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <script src="../assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main"><span lang="pt">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="../index.html" aria-label="Davi Oliveira, início">
-        <img src="../hexagon-letter-d.svg" alt="" width="32" height="32">
+      <a class="brand" href="../../" aria-label="Davi Oliveira, início">
+        <img src="../../hexagon-letter-d.svg" alt="" width="32" height="32">
         <span>Davi Oliveira</span>
       </a>
       <nav class="nav" aria-label="Principal">
-        <a href="../index.html#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
-        <a href="../index.html#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
-        <a href="../index.html#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+        <a href="../../#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+        <a href="../../#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+        <a href="../../#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
       </nav>
       <div class="controls">
         <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
@@ -51,7 +51,7 @@
 
   <main id="main">
     <div class="container case-hero">
-      <a class="back" href="../index.html#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
+      <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Experimento</span><span lang="en">Solo · Experiment</span></p>
       <h1>Plin</h1>
       <p class="lede"><span lang="pt">Registrar um gasto virou uma mensagem de 5 segundos no Telegram.</span><span lang="en">Logging an expense became a 5-second Telegram message.</span></p>
@@ -67,7 +67,7 @@
           <h2><span lang="pt">Decisões técnicas</span><span lang="en">Technical decisions</span></h2>
           <ul lang="pt"><li><strong>NLP híbrido</strong>: o spaCy (<code>pt_core_news_sm</code>) faz a lematização, então "gastou", "gastei" e "gastar" contam como a mesma intenção. O valor é extraído por regex, em vários formatos.</li><li><strong>ID de transação por usuário</strong>: cada usuário tem a própria sequência, então <code>/apagar 3</code> funciona sem expor as chaves globais do banco.</li><li><strong>Chave primária composta</strong> <code>(user_id, id_transacao_user)</code>: isola os usuários no nível do banco.</li><li><strong>Docker Compose</strong>: o bot e o banco sobem juntos com um comando.</li></ul>
           <ul lang="en"><li><strong>Hybrid NLP</strong>: spaCy (<code>pt_core_news_sm</code>) handles lemmatization, so "gastou", "gastei" and "gastar" count as the same intent. The amount is extracted with regex, in several formats.</li><li><strong>Per-user transaction IDs</strong>: each user has their own sequence, so <code>/apagar 3</code> works without exposing the database's global keys.</li><li><strong>Composite primary key</strong> <code>(user_id, id_transacao_user)</code>: isolates users at the database level.</li><li><strong>Docker Compose</strong>: the bot and the database start together with one command.</li></ul>
-          <video src="../assets/img/plin-bot/execucao.mp4" controls muted playsinline preload="none" aria-label="Demonstração do Plin no Telegram"></video>
+          <video src="../../assets/img/plin-bot/execucao.mp4" controls muted playsinline preload="none" aria-label="Demonstração do Plin no Telegram"></video>
         </section>
         <section>
           <h2><span lang="pt">Limitações</span><span lang="en">Limitations</span></h2>
@@ -90,7 +90,7 @@
   <footer class="site-footer">
     <div class="container">
       <span>© <span id="year">2026</span> Davi Domingos de Oliveira</span>
-      <a href="../index.html"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
+      <a href="../../"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
     </div>
   </footer>
 </body>

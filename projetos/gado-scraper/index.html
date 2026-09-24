@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gado-Scraper · Estudo de caso · Davi Oliveira</title>
   <meta name="description" content="Gado-Scraper: pipeline diária em GitHub Actions que coleta cotações de boi gordo de 33 praças e versiona o histórico no Git.">
-  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/gado-scraper.html">
+  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/gado-scraper/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Gado-Scraper · Estudo de caso">
   <meta property="og:description" content="Gado-Scraper: pipeline diária em GitHub Actions que coleta cotações de boi gordo de 33 praças e versiona o histórico no Git.">
-  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/gado-scraper.html">
+  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/gado-scraper/">
   <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/gado-scraper/workflow.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#011936">
-  <link rel="icon" href="../hexagon-letter-d.svg" type="image/svg+xml">
+  <link rel="icon" href="../../hexagon-letter-d.svg" type="image/svg+xml">
   <script>
     (function(){var r=document.documentElement,l,t;try{l=localStorage.getItem('lang');t=localStorage.getItem('theme')}catch(e){}
     if(!l)l=(navigator.language||'pt').slice(0,2)==='pt'?'pt':'en';r.setAttribute('data-lang',l);r.lang=l==='en'?'en':'pt-BR';if(t)r.setAttribute('data-theme',t)})();
@@ -23,21 +23,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <script src="../assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main"><span lang="pt">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="../index.html" aria-label="Davi Oliveira, início">
-        <img src="../hexagon-letter-d.svg" alt="" width="32" height="32">
+      <a class="brand" href="../../" aria-label="Davi Oliveira, início">
+        <img src="../../hexagon-letter-d.svg" alt="" width="32" height="32">
         <span>Davi Oliveira</span>
       </a>
       <nav class="nav" aria-label="Principal">
-        <a href="../index.html#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
-        <a href="../index.html#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
-        <a href="../index.html#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+        <a href="../../#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+        <a href="../../#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+        <a href="../../#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
       </nav>
       <div class="controls">
         <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
@@ -51,7 +51,7 @@
 
   <main id="main">
     <div class="container case-hero">
-      <a class="back" href="../index.html#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
+      <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Rodando diariamente</span><span lang="en">Solo · Runs daily</span></p>
       <h1>Gado-Scraper</h1>
       <p class="lede"><span lang="pt">Pipeline diária que coleta as cotações de boi gordo e guarda o histórico no próprio Git.</span><span lang="en">A daily pipeline that scrapes cattle prices and keeps the history in Git itself.</span></p>
@@ -67,7 +67,7 @@
           <h2><span lang="pt">Git como banco de dados</span><span lang="en">Git as a database</span></h2>
           <p lang="pt">Um cron do GitHub Actions roda todo dia às 09:00 UTC. Cada execução gera um commit com os JSONs do dia, o que resolve três coisas que um banco exigiria configurar à parte: o histórico não pode ser alterado, a infraestrutura não custa nada e qualquer fork já vem com o histórico completo. Para ver as cotações de um dia, basta <code>git show &lt;hash&gt;:cotacoes_boi_hoje.json</code>.</p>
           <p lang="en">A GitHub Actions cron job runs every day at 09:00 UTC. Each run produces a commit with that day's JSON files, which covers three things a database would need to be set up for separately: the history can't be altered, the infrastructure is free, and any fork comes with the full history. To see a given day's prices, just run <code>git show &lt;hash&gt;:cotacoes_boi_hoje.json</code>.</p>
-          <figure><img src="../assets/img/gado-scraper/workflow.webp" alt="Workflow do GitHub Actions" width="1400" height="764" loading="lazy"><figcaption><span lang="pt">Execução diária no GitHub Actions.</span><span lang="en">Daily run on GitHub Actions.</span></figcaption></figure>
+          <figure><img src="../../assets/img/gado-scraper/workflow.webp" alt="Workflow do GitHub Actions" width="1400" height="764" loading="lazy"><figcaption><span lang="pt">Execução diária no GitHub Actions.</span><span lang="en">Daily run on GitHub Actions.</span></figcaption></figure>
         </section>
         <section>
           <h2><span lang="pt">Dificuldade: HTML que muda</span><span lang="en">Challenge: HTML that keeps changing</span></h2>
@@ -81,7 +81,7 @@
         </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
-        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, pandas, BeautifulSoup, GitHub Actions</dd><dt><span lang="pt">Fonte</span><span lang="en">Source</span></dt><dd>Scot Consultoria</dd><dt><span lang="pt">Usado por</span><span lang="en">Used by</span></dt><dd><a href="sistema-gado.html">Sistema-Gado</a></dd></dl>
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, pandas, BeautifulSoup, GitHub Actions</dd><dt><span lang="pt">Fonte</span><span lang="en">Source</span></dt><dd>Scot Consultoria</dd><dt><span lang="pt">Usado por</span><span lang="en">Used by</span></dt><dd><a href="../sistema-gado/">Sistema-Gado</a></dd></dl>
         <div class="actions"><a class="btn btn-primary" href="https://github.com/Dom1ng0s/Gado-Scraper" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
       </aside>
     </div>
@@ -90,7 +90,7 @@
   <footer class="site-footer">
     <div class="container">
       <span>© <span id="year">2026</span> Davi Domingos de Oliveira</span>
-      <a href="../index.html"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
+      <a href="../../"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
     </div>
   </footer>
 </body>

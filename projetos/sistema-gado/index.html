@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sistema-Gado · Estudo de caso · Davi Oliveira</title>
   <meta name="description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e MySQL com cálculos em views SQL.">
-  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/sistema-gado.html">
+  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/sistema-gado/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Sistema-Gado · Estudo de caso">
   <meta property="og:description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e MySQL com cálculos em views SQL.">
-  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/sistema-gado.html">
+  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/sistema-gado/">
   <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/sistema-gado/rebanho.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#011936">
-  <link rel="icon" href="../hexagon-letter-d.svg" type="image/svg+xml">
+  <link rel="icon" href="../../hexagon-letter-d.svg" type="image/svg+xml">
   <script>
     (function(){var r=document.documentElement,l,t;try{l=localStorage.getItem('lang');t=localStorage.getItem('theme')}catch(e){}
     if(!l)l=(navigator.language||'pt').slice(0,2)==='pt'?'pt':'en';r.setAttribute('data-lang',l);r.lang=l==='en'?'en':'pt-BR';if(t)r.setAttribute('data-theme',t)})();
@@ -23,21 +23,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <script src="../assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main"><span lang="pt">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="../index.html" aria-label="Davi Oliveira, início">
-        <img src="../hexagon-letter-d.svg" alt="" width="32" height="32">
+      <a class="brand" href="../../" aria-label="Davi Oliveira, início">
+        <img src="../../hexagon-letter-d.svg" alt="" width="32" height="32">
         <span>Davi Oliveira</span>
       </a>
       <nav class="nav" aria-label="Principal">
-        <a href="../index.html#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
-        <a href="../index.html#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
-        <a href="../index.html#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+        <a href="../../#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+        <a href="../../#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+        <a href="../../#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
       </nav>
       <div class="controls">
         <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
@@ -51,7 +51,7 @@
 
   <main id="main">
     <div class="container case-hero">
-      <a class="back" href="../index.html#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
+      <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Em produção</span><span lang="en">Solo · In production</span></p>
       <h1>Sistema-Gado</h1>
       <p class="lede"><span lang="pt">Sistema de gestão para a fazenda da minha família: rebanho, fluxo de caixa e cotações num só lugar.</span><span lang="en">A management system for my family's farm: herd, cash flow and market prices in one place.</span></p>
@@ -69,7 +69,7 @@
           <p lang="en">ADG is computed with <code>LAG()</code> over the weigh-in history: each weigh-in is compared with the previous one and divided by the number of days between them. Instead of loading everything into Flask and looping animal by animal, a view (<code>v_gmd_analitico</code>) uses a CTE and a window function and returns the finished result. The same goes for cash flow (<code>v_fluxo_caixa</code>, a <code>UNION</code> of purchases, sales, costs and medications) and the system's other views.</p>
           <p lang="pt">Por isso descartei o ORM. Ele trocaria uma query legível de 40 linhas por várias chamadas de método gerando SQL equivalente, só que mais difícil de ler e de otimizar com índices. O schema é versionado com yoyo-migrations, em SQL puro e com uma política de só adicionar.</p>
           <p lang="en">That's why I dropped the ORM. It would have replaced a readable 40-line query with several method calls generating equivalent SQL that's harder to read and to tune with indexes. The schema is versioned with yoyo-migrations, in plain SQL, with an additive-only policy.</p>
-          <figure><img src="../assets/img/sistema-gado/viewgmd.webp" alt="View SQL de GMD analítico" width="780" height="846" loading="lazy"><figcaption><span lang="pt">View que calcula o GMD de cada animal.</span><span lang="en">View that computes each animal's ADG.</span></figcaption></figure>
+          <figure><img src="../../assets/img/sistema-gado/viewgmd.webp" alt="View SQL de GMD analítico" width="780" height="846" loading="lazy"><figcaption><span lang="pt">View que calcula o GMD de cada animal.</span><span lang="en">View that computes each animal's ADG.</span></figcaption></figure>
         </section>
         <section>
           <h2><span lang="pt">Stack</span><span lang="en">Stack</span></h2>
@@ -89,8 +89,8 @@
           </table>
           <p lang="pt">O painel lista direto os brincos dos 17 animais abaixo do GMD mínimo, algo que a planilha não mostrava.</p>
           <p lang="en">The dashboard lists the ear tags of the 17 animals below minimum ADG, something the spreadsheet never showed.</p>
-          <figure><img src="../assets/img/sistema-gado/rebanho.webp" alt="Tela de rebanho do Sistema-Gado" width="1400" height="900" loading="lazy"><figcaption><span lang="pt">Tela de rebanho.</span><span lang="en">Herd screen.</span></figcaption></figure>
-          <figure><img src="../assets/img/sistema-gado/financeiro.webp" alt="Tela financeira do Sistema-Gado" width="1400" height="900" loading="lazy"><figcaption><span lang="pt">Fluxo de caixa.</span><span lang="en">Cash flow.</span></figcaption></figure>
+          <figure><img src="../../assets/img/sistema-gado/rebanho.webp" alt="Tela de rebanho do Sistema-Gado" width="1400" height="900" loading="lazy"><figcaption><span lang="pt">Tela de rebanho.</span><span lang="en">Herd screen.</span></figcaption></figure>
+          <figure><img src="../../assets/img/sistema-gado/financeiro.webp" alt="Tela financeira do Sistema-Gado" width="1400" height="900" loading="lazy"><figcaption><span lang="pt">Fluxo de caixa.</span><span lang="en">Cash flow.</span></figcaption></figure>
         </section>
         <section>
           <h2><span lang="pt">O que eu faria diferente</span><span lang="en">What I'd do differently</span></h2>
@@ -108,7 +108,7 @@
   <footer class="site-footer">
     <div class="container">
       <span>© <span id="year">2026</span> Davi Domingos de Oliveira</span>
-      <a href="../index.html"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
+      <a href="../../"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
     </div>
   </footer>
 </body>
