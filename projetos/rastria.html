@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt"
+  data-title-pt="RastrIA · Estudo de caso · Davi Oliveira"
+  data-title-en="RastrIA · Case study · Davi Oliveira">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RastrIA · Estudo de caso · Davi Oliveira</title>
+  <meta name="description" content="RastrIA: plataforma institucional de saúde e desempenho físico em Django e React, feita em equipe para o Edital Centelha.">
+  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/rastria.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RastrIA · Estudo de caso">
+  <meta property="og:description" content="RastrIA: plataforma institucional de saúde e desempenho físico em Django e React, feita em equipe para o Edital Centelha.">
+  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/rastria.html">
+  <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#011936">
+  <link rel="icon" href="../hexagon-letter-d.svg" type="image/svg+xml">
+  <script>
+    (function(){var r=document.documentElement,l,t;try{l=localStorage.getItem('lang');t=localStorage.getItem('theme')}catch(e){}
+    if(!l)l=(navigator.language||'pt').slice(0,2)==='pt'?'pt':'en';r.setAttribute('data-lang',l);r.lang=l==='en'?'en':'pt-BR';if(t)r.setAttribute('data-theme',t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main"><span lang="pt">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html" aria-label="Davi Oliveira, início">
+        <img src="../hexagon-letter-d.svg" alt="" width="32" height="32">
+        <span>Davi Oliveira</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="../index.html#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+        <a href="../index.html#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+        <a href="../index.html#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+      </nav>
+      <div class="controls">
+        <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Alternar tema claro/escuro">
+          <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container case-hero">
+      <a class="back" href="../index.html#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
+      <p class="eyebrow"><span lang="pt">Projeto em equipe · Em desenvolvimento</span><span lang="en">Team project · In development</span></p>
+      <h1>RastrIA</h1>
+      <p class="lede"><span lang="pt">Plataforma de acompanhamento de saúde e desempenho físico para instituições, feita em equipe para o Edital Centelha.</span><span lang="en">A health and physical-performance tracking platform for institutions, built as a team for the Centelha program.</span></p>
+    </div>
+    <div class="container case-layout">
+      <div class="case-main">
+        <section>
+          <h2><span lang="pt">Problema</span><span lang="en">Problem</span></h2>
+          <p lang="pt">Na Polícia Militar de Alagoas, os dados de saúde e desempenho físico de cada policial ficam espalhados em registros separados. O RastrIA junta esses prontuários numa plataforma única, pensada para uso institucional (B2B/B2G): não existe cadastro público, e as contas são criadas pela própria instituição.</p>
+          <p lang="en">At the Alagoas Military Police, each officer's health and fitness data is scattered across separate records. RastrIA brings those records into a single platform built for institutional use (B2B/B2G): there's no public sign-up, and accounts are provisioned by the institution itself.</p>
+        </section>
+        <section>
+          <h2><span lang="pt">Stack e arquitetura</span><span lang="en">Stack and architecture</span></h2>
+          <p lang="pt">O backend é uma API em Django com Django REST Framework, e o frontend é uma SPA em React com Vite e Tailwind. Os dois vivem no mesmo repositório (<code>backend/</code> e <code>frontend/</code>) e o deploy é feito no Railway. No time, trabalho nas duas pontas.</p>
+          <p lang="en">The backend is a Django API with Django REST Framework, and the frontend is a React SPA built with Vite and Tailwind. Both live in the same repository (<code>backend/</code> and <code>frontend/</code>) and are deployed on Railway. I work on both ends of the stack.</p>
+        </section>
+        <section>
+          <h2><span lang="pt">Decisões e dificuldades</span><span lang="en">Decisions and challenges</span></h2>
+          <p lang="pt"><span class="todo">TODO</span> Estudo de caso em desenvolvimento: principais decisões técnicas, o problema mais difícil e como foi resolvido.</p>
+          <p lang="en"><span class="todo">TODO</span> Case study in progress: key technical decisions, the hardest problem and how it was solved.</p>
+        </section>
+        <section>
+          <h2><span lang="pt">Resultado</span><span lang="en">Outcome</span></h2>
+          <p lang="pt">O projeto está em desenvolvimento. Uma versão de testes está no ar em <a href="https://rastria.up.railway.app/" rel="noopener">rastria.up.railway.app</a>.</p>
+          <p lang="en">The project is in development. A test build is live at <a href="https://rastria.up.railway.app/" rel="noopener">rastria.up.railway.app</a>.</p>
+          <p lang="pt"><span class="todo">TODO</span> Métricas e próximos passos.</p>
+          <p lang="en"><span class="todo">TODO</span> Metrics and next steps.</p>
+        </section>
+      </div>
+      <aside class="aside" aria-label="Ficha técnica">
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Fullstack (equipe)</span><span lang="en">Fullstack (team)</span></dd><dt><span lang="pt">Contexto</span><span lang="en">Context</span></dt><dd><span lang="pt">Edital Centelha</span><span lang="en">Centelha program</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Django, DRF, React, Vite, Tailwind</dd><dt><span lang="pt">Status</span><span lang="en">Status</span></dt><dd><span lang="pt">Em desenvolvimento</span><span lang="en">In development</span></dd></dl>
+        <div class="actions"><a class="btn btn-primary" href="https://rastria.up.railway.app/" rel="noopener"><span lang="pt">Ver demo</span><span lang="en">View demo</span></a><a class="btn" href="https://github.com/Dom1ng0s/RastrIA" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="year">2026</span> Davi Domingos de Oliveira</span>
+      <a href="../index.html"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
+    </div>
+  </footer>
+</body>
+</html>

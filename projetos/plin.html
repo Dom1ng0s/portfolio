@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt"
+  data-title-pt="Plin · Estudo de caso · Davi Oliveira"
+  data-title-en="Plin · Case study · Davi Oliveira">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plin · Estudo de caso · Davi Oliveira</title>
+  <meta name="description" content="Plin: chatbot de finanças pessoais no Telegram com NLP em spaCy, SQLAlchemy e Docker.">
+  <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/plin.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Plin · Estudo de caso">
+  <meta property="og:description" content="Plin: chatbot de finanças pessoais no Telegram com NLP em spaCy, SQLAlchemy e Docker.">
+  <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/plin.html">
+  <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#011936">
+  <link rel="icon" href="../hexagon-letter-d.svg" type="image/svg+xml">
+  <script>
+    (function(){var r=document.documentElement,l,t;try{l=localStorage.getItem('lang');t=localStorage.getItem('theme')}catch(e){}
+    if(!l)l=(navigator.language||'pt').slice(0,2)==='pt'?'pt':'en';r.setAttribute('data-lang',l);r.lang=l==='en'?'en':'pt-BR';if(t)r.setAttribute('data-theme',t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main"><span lang="pt">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html" aria-label="Davi Oliveira, início">
+        <img src="../hexagon-letter-d.svg" alt="" width="32" height="32">
+        <span>Davi Oliveira</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="../index.html#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+        <a href="../index.html#sobre"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+        <a href="../index.html#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+      </nav>
+      <div class="controls">
+        <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Alternar tema claro/escuro">
+          <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container case-hero">
+      <a class="back" href="../index.html#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
+      <p class="eyebrow"><span lang="pt">Individual · Experimento</span><span lang="en">Solo · Experiment</span></p>
+      <h1>Plin</h1>
+      <p class="lede"><span lang="pt">Registrar um gasto virou uma mensagem de 5 segundos no Telegram.</span><span lang="en">Logging an expense became a 5-second Telegram message.</span></p>
+    </div>
+    <div class="container case-layout">
+      <div class="case-main">
+        <section>
+          <h2><span lang="pt">Problema</span><span lang="en">Problem</span></h2>
+          <p lang="pt">Apps de finanças perdem o usuário no atrito: abrir o app, fazer login, achar "nova despesa" e preencher um formulário na fila do mercado. Quem não registra na hora acaba esquecendo. Como o Telegram já está aberto, o Plin transforma o registro numa conversa: <code>gastei 45 reais no mercado</code> vira uma despesa de R$ 45,00 na categoria Mercado. Comecei o projeto por curiosidade, para testar NLP na prática.</p>
+          <p lang="en">Finance apps lose people to friction: open the app, log in, find "new expense", fill in a form while standing in line at the store. If you don't log it right away, you forget. Since Telegram is already open, Plin turns logging into a chat: <code>gastei 45 reais no mercado</code> becomes a R$ 45.00 expense under Groceries. I started it out of curiosity, to try NLP in practice.</p>
+        </section>
+        <section>
+          <h2><span lang="pt">Decisões técnicas</span><span lang="en">Technical decisions</span></h2>
+          <ul lang="pt"><li><strong>NLP híbrido</strong>: o spaCy (<code>pt_core_news_sm</code>) faz a lematização, então "gastou", "gastei" e "gastar" contam como a mesma intenção. O valor é extraído por regex, em vários formatos.</li><li><strong>ID de transação por usuário</strong>: cada usuário tem a própria sequência, então <code>/apagar 3</code> funciona sem expor as chaves globais do banco.</li><li><strong>Chave primária composta</strong> <code>(user_id, id_transacao_user)</code>: isola os usuários no nível do banco.</li><li><strong>Docker Compose</strong>: o bot e o banco sobem juntos com um comando.</li></ul>
+          <ul lang="en"><li><strong>Hybrid NLP</strong>: spaCy (<code>pt_core_news_sm</code>) handles lemmatization, so "gastou", "gastei" and "gastar" count as the same intent. The amount is extracted with regex, in several formats.</li><li><strong>Per-user transaction IDs</strong>: each user has their own sequence, so <code>/apagar 3</code> works without exposing the database's global keys.</li><li><strong>Composite primary key</strong> <code>(user_id, id_transacao_user)</code>: isolates users at the database level.</li><li><strong>Docker Compose</strong>: the bot and the database start together with one command.</li></ul>
+          <video src="../assets/img/plin-bot/execucao.mp4" controls muted playsinline preload="none" aria-label="Demonstração do Plin no Telegram"></video>
+        </section>
+        <section>
+          <h2><span lang="pt">Limitações</span><span lang="en">Limitations</span></h2>
+          <p lang="pt">A classificação é baseada em regras, com o modelo pequeno do spaCy, então frases ambíguas ou gírias podem passar despercebidas. O bot usa SQLite e ainda não tem deploy público.</p>
+          <p lang="en">Classification is rule-based and uses spaCy's small model, so ambiguous phrases or slang can slip through. The bot uses SQLite and has no public deployment yet.</p>
+        </section>
+        <section>
+          <h2><span lang="pt">Próximos passos</span><span lang="en">Next steps</span></h2>
+          <ul lang="pt"><li>Deploy automático numa VPS via GitHub Actions</li><li>Gráficos por categoria</li><li>Trocar o parser por um modelo mais robusto</li><li>Migrar para PostgreSQL</li></ul>
+          <ul lang="en"><li>Automated VPS deploy via GitHub Actions</li><li>Per-category charts</li><li>Replace the parser with a more robust model</li><li>Move to PostgreSQL</li></ul>
+        </section>
+      </div>
+      <aside class="aside" aria-label="Ficha técnica">
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, spaCy, SQLAlchemy, SQLite, Docker</dd><dt><span lang="pt">Status</span><span lang="en">Status</span></dt><dd><span lang="pt">Roda localmente, sem deploy</span><span lang="en">Runs locally, not deployed</span></dd></dl>
+        <div class="actions"><a class="btn btn-primary" href="https://github.com/Dom1ng0s/Plin" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="year">2026</span> Davi Domingos de Oliveira</span>
+      <a href="../index.html"><span lang="pt">Voltar ao início</span><span lang="en">Back to home</span></a>
+    </div>
+  </footer>
+</body>
+</html>
