@@ -55,7 +55,13 @@
       <p class="eyebrow"><span lang="pt">Individual · Rodando diariamente</span><span lang="en">Solo · Runs daily</span></p>
       <h1>Gado-Scraper</h1>
       <p class="lede"><span lang="pt">Pipeline diária que coleta as cotações de boi gordo e guarda o histórico no próprio Git.</span><span lang="en">A daily pipeline that scrapes cattle prices and keeps the history in Git itself.</span></p>
-    </div>
+        <dl class="case-stats">
+      <div><dt><span lang="pt">Coletas diárias</span><span lang="en">Daily snapshots</span></dt><dd>171<small><span lang="pt">em 181 dias de operação</span><span lang="en">over 181 days running</span></small></dd></div>
+      <div><dt><span lang="pt">Regiões monitoradas</span><span lang="en">Regions tracked</span></dt><dd>33<small><span lang="pt">cotações de boi gordo</span><span lang="en">fat-cattle prices</span></small></dd></div>
+      <div><dt><span lang="pt">Linhas de histórico</span><span lang="en">Rows of history</span></dt><dd>5.115<small><span lang="pt">uma por região, por dia</span><span lang="en">one per region, per day</span></small></dd></div>
+      <div><dt><span lang="pt">Custo de infra</span><span lang="en">Infra cost</span></dt><dd>R$ 0<small><span lang="pt">GitHub Actions + Git</span><span lang="en">GitHub Actions + Git</span></small></dd></div>
+    </dl>
+  </div>
     <div class="container case-layout">
       <div class="case-main">
         <section>
@@ -79,12 +85,46 @@
           <p lang="pt">Em 26/06/2026, eram 171 coletas diárias em 181 dias de operação e 5.115 linhas no histórico de boi gordo, uma por praça por dia. Os dados alimentam o Sistema-Gado.</p>
           <p lang="en">As of 2026-06-26: 171 daily snapshots over 181 days of operation and 5,115 rows of fat-cattle price history, one per market per day. The data feeds Sistema-Gado.</p>
         </section>
+        <section>
+          <h2><span lang="pt">Próximos passos</span><span lang="en">Next steps</span></h2>
+          <ul lang="pt">
+            <li>Conferir se o preço coletado faz sentido: faixa plausível e variação aceitável de um dia para o outro. Hoje o alerta avisa quando a coleta falha, mas não quando ela traz número errado</li>
+            <li>Versionar também o HTML bruto do dia, para permitir reprocessar o histórico depois de corrigir o parser</li>
+            <li>Guardar um HTML de exemplo no repositório para testar o parser no CI, sem depender da rede</li>
+            <li>Segunda âncora de fallback, além da string "Funrural"</li>
+          </ul>
+          <ul lang="en">
+            <li>Check whether the price makes sense: plausible range, acceptable day-over-day variation. Today the alert fires when a run fails, but not when it returns a wrong number</li>
+            <li>Version the day's raw HTML too, so the history can be reprocessed after a parser fix</li>
+            <li>Keep an example HTML file in the repository to test the parser in CI, without the network</li>
+            <li>A second fallback anchor beyond the "Funrural" string</li>
+          </ul>
+        </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
         <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, pandas, BeautifulSoup, GitHub Actions</dd><dt><span lang="pt">Fonte</span><span lang="en">Source</span></dt><dd>Scot Consultoria</dd><dt><span lang="pt">Usado por</span><span lang="en">Used by</span></dt><dd><a href="../sistema-gado/">Sistema-Gado</a></dd></dl>
         <div class="actions"><a class="btn btn-primary" href="https://github.com/Dom1ng0s/Gado-Scraper" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
       </aside>
     </div>
+
+  <section class="case-foot">
+    <div class="container">
+      <div>
+        <p class="next-label"><span lang="pt">Próximo projeto</span><span lang="en">Next project</span></p>
+        <h2><a href="../rastria/">RastrIA →</a></h2>
+        <p><span lang="pt">Plataforma de prontuários em Django e React, feita em equipe.</span><span lang="en">A medical-record platform in Django and React, built as a team.</span></p>
+        <p class="minor-links"><a href="../../#projetos"><span lang="pt">Ver todos os projetos</span><span lang="en">See all projects</span></a></p>
+      </div>
+      <div>
+        <h2><span lang="pt">Vamos conversar</span><span lang="en">Let's talk</span></h2>
+        <p><span lang="pt">Estou procurando estágio em desenvolvimento, remoto ou presencial em Maceió. Se quiser falar sobre este projeto ou sobre uma vaga, é só escrever.</span><span lang="en">I'm looking for a development internship, remote or on-site in Maceió. If you want to talk about this project or about a role, just write.</span></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:odomingosdavi@gmail.com"><span lang="pt">Enviar e-mail</span><span lang="en">Send an email</span></a>
+          <a class="btn" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
   </main>
 
   <footer class="site-footer">
