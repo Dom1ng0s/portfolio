@@ -6,11 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sistema-Gado · Estudo de caso · Davi Oliveira</title>
-  <meta name="description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e MySQL com cálculos em views SQL.">
+  <meta name="description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e PostgreSQL com cálculos em views SQL.">
   <link rel="canonical" href="https://davioliveira.is-a.dev/projetos/sistema-gado/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Sistema-Gado · Estudo de caso">
-  <meta property="og:description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e MySQL com cálculos em views SQL.">
+  <meta property="og:description" content="Sistema-Gado: gestão de rebanho e fluxo de caixa para fazenda de gado de corte, em Flask e PostgreSQL com cálculos em views SQL.">
   <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/sistema-gado/">
   <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/sistema-gado/rebanho.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -71,16 +71,41 @@
         </section>
         <section>
           <h2><span lang="pt">Decisão principal: cálculos no banco, não no Python</span><span lang="en">Key decision: compute in the database, not in Python</span></h2>
-          <p lang="pt">O GMD é calculado com <code>LAG()</code> sobre o histórico de pesagens: cada pesagem é comparada com a anterior e dividida pelo intervalo de dias. Em vez de trazer tudo para a memória do Flask e iterar animal por animal, uma view (<code>v_gmd_analitico</code>) usa CTE e window function e devolve o resultado pronto. O mesmo vale para o fluxo de caixa (<code>v_fluxo_caixa</code>, um <code>UNION</code> de compras, vendas, custos e medicações) e para as outras views do sistema.</p>
-          <p lang="en">ADG is computed with <code>LAG()</code> over the weigh-in history: each weigh-in is compared with the previous one and divided by the number of days between them. Instead of loading everything into Flask and looping animal by animal, a view (<code>v_gmd_analitico</code>) uses a CTE and a window function and returns the finished result. The same goes for cash flow (<code>v_fluxo_caixa</code>, a <code>UNION</code> of purchases, sales, costs and medications) and the system's other views.</p>
+          <p lang="pt">O GMD de cada animal sai de uma única view: duas <code>window functions</code> marcam a primeira e a última pesagem, e o ganho é dividido pelo intervalo de dias. Em vez de trazer tudo para a memória do Flask e iterar animal por animal, uma view (<code>v_gmd_analitico</code>) usa CTE e window function e devolve o resultado pronto. O mesmo vale para o fluxo de caixa (<code>v_fluxo_caixa</code>, um <code>UNION</code> de compras, vendas, custos e medicações) e para as outras views do sistema.</p>
+          <p lang="en">Each animal's ADG comes out of a single view: two <code>window functions</code> mark the first and last weigh-in, and the weight gain is divided by the number of days between them. Instead of loading everything into Flask and looping animal by animal, a view (<code>v_gmd_analitico</code>) uses a CTE and a window function and returns the finished result. The same goes for cash flow (<code>v_fluxo_caixa</code>, a <code>UNION</code> of purchases, sales, costs and medications) and the system's other views.</p>
           <p lang="pt">Por isso descartei o ORM. Ele trocaria uma query legível de 40 linhas por várias chamadas de método gerando SQL equivalente, só que mais difícil de ler e de otimizar com índices. O schema é versionado com yoyo-migrations, em SQL puro e com uma política de só adicionar.</p>
           <p lang="en">That's why I dropped the ORM. It would have replaced a readable 40-line query with several method calls generating equivalent SQL that's harder to read and to tune with indexes. The schema is versioned with yoyo-migrations, in plain SQL, with an additive-only policy.</p>
-          <figure><img src="../../assets/img/sistema-gado/viewgmd.webp" alt="View SQL de GMD analítico" width="780" height="846" loading="lazy"><figcaption><span lang="pt">View que calcula o GMD de cada animal.</span><span lang="en">View that computes each animal's ADG.</span></figcaption></figure>
+          <pre><code>CREATE OR REPLACE VIEW v_gmd_analitico AS
+WITH pesagens_ordenadas AS (
+    SELECT animal_id, data_pesagem, peso,
+        ROW_NUMBER() OVER (PARTITION BY animal_id ORDER BY data_pesagem ASC)  AS rn_asc,
+        ROW_NUMBER() OVER (PARTITION BY animal_id ORDER BY data_pesagem DESC) AS rn_desc
+    FROM pesagens WHERE deleted_at IS NULL
+),
+primeira_ultima AS (
+    SELECT animal_id,
+        MAX(data_pesagem) FILTER (WHERE rn_asc  = 1) AS data_inicial,
+        MAX(peso)         FILTER (WHERE rn_asc  = 1) AS peso_inicial,
+        MAX(data_pesagem) FILTER (WHERE rn_desc = 1) AS data_final,
+        MAX(peso)         FILTER (WHERE rn_desc = 1) AS peso_final
+    FROM pesagens_ordenadas GROUP BY animal_id
+)
+SELECT a.user_id, a.id AS animal_id, a.brinco, p.peso_final,
+    (p.peso_final - p.peso_inicial)  AS ganho_total,
+    (p.data_final  - p.data_inicial) AS dias,
+    -- gmd fica NULL quando todas as pesagens são do mesmo dia
+    CASE WHEN (p.data_final - p.data_inicial) &gt; 0
+         THEN (p.peso_final - p.peso_inicial) / (p.data_final - p.data_inicial)
+         END AS gmd
+FROM primeira_ultima p
+JOIN animais a ON p.animal_id = a.id
+WHERE a.deleted_at IS NULL;</code></pre>
+          <p class="code-note"><span lang="pt">A view que calcula o GMD de cada animal (<code>migrations/0001.baseline-schema.sql</code>). O <code>CASE</code> no fim evita divisão por zero em animais com pesagens só na mesma data. Esse caso quebrava a conta quando ela ainda rodava no Python.</span><span lang="en">The view that computes each animal's ADG (<code>migrations/0001.baseline-schema.sql</code>). The trailing <code>CASE</code> avoids dividing by zero for animals whose weigh-ins are all on the same date. That case used to break the math back when it ran in Python.</span></p>
         </section>
         <section>
           <h2><span lang="pt">Stack</span><span lang="en">Stack</span></h2>
-          <ul lang="pt"><li><strong>Flask</strong>: leve, sem ORM, porque o SQL puro era o requisito central</li><li><strong>MySQL 8</strong>: window functions para o GMD</li><li><strong>Redis</strong>: cache</li><li><strong>Playwright</strong>: geração de PDF no servidor</li><li><strong>Flask-Limiter</strong>: limite de requisições no login e na exportação</li><li><strong>Railway</strong>: container e MySQL gerenciado no mesmo provedor</li></ul>
-          <ul lang="en"><li><strong>Flask</strong>: lightweight, no ORM, since plain SQL was the core requirement</li><li><strong>MySQL 8</strong>: window functions for ADG</li><li><strong>Redis</strong>: caching</li><li><strong>Playwright</strong>: server-side PDF generation</li><li><strong>Flask-Limiter</strong>: rate limiting on login and export</li><li><strong>Railway</strong>: container and managed MySQL from one provider</li></ul>
+          <ul lang="pt"><li><strong>Flask</strong>: leve, sem ORM, porque o SQL puro era o requisito central</li><li><strong>PostgreSQL</strong>: window functions, views materializadas e índices parciais para o GMD</li><li><strong>Redis</strong>: cache</li><li><strong>Playwright</strong>: geração de PDF no servidor</li><li><strong>Flask-Limiter</strong>: limite de requisições no login e na exportação</li><li><strong>Railway</strong>: container e PostgreSQL gerenciado no mesmo provedor</li></ul>
+          <ul lang="en"><li><strong>Flask</strong>: lightweight, no ORM, since plain SQL was the core requirement</li><li><strong>PostgreSQL</strong>: window functions, materialized views and partial indexes for ADG</li><li><strong>Redis</strong>: caching</li><li><strong>Playwright</strong>: server-side PDF generation</li><li><strong>Flask-Limiter</strong>: rate limiting on login and export</li><li><strong>Railway</strong>: container and managed PostgreSQL from one provider</li></ul>
         </section>
         <section>
           <h2><span lang="pt">Resultado</span><span lang="en">Outcome</span></h2>
@@ -105,7 +130,7 @@
         </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
-        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Flask, MySQL, Redis, Playwright</dd><dt><span lang="pt">Deploy</span><span lang="en">Deploy</span></dt><dd>Railway</dd><dt><span lang="pt">Demo</span><span lang="en">Demo</span></dt><dd><span lang="pt">login: <code>demonstracao</code> / <code>demonstracao</code></span><span lang="en">login: <code>demonstracao</code> / <code>demonstracao</code></span></dd></dl>
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Flask, PostgreSQL, Redis, Playwright</dd><dt><span lang="pt">Deploy</span><span lang="en">Deploy</span></dt><dd>Railway</dd><dt><span lang="pt">Demo</span><span lang="en">Demo</span></dt><dd><span lang="pt">login: <code>demonstracao</code> / <code>demonstracao</code></span><span lang="en">login: <code>demonstracao</code> / <code>demonstracao</code></span></dd></dl>
         <div class="actions"><a class="btn btn-primary" href="https://sistemadogado.up.railway.app/login" rel="noopener"><span lang="pt">Ver demo</span><span lang="en">View demo</span></a><a class="btn" href="https://github.com/Dom1ng0s/sistema_gado" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
       </aside>
     </div>
