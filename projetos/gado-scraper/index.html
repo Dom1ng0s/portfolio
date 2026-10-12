@@ -54,7 +54,7 @@
       <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Rodando diariamente</span><span lang="en">Solo · Runs daily</span></p>
       <h1>Gado-Scraper</h1>
-      <p class="lede"><span lang="pt">Pipeline diária que coleta as cotações de boi gordo e guarda o histórico no próprio Git.</span><span lang="en">A daily pipeline that scrapes cattle prices and keeps the history in Git itself.</span></p>
+      <p class="lede"><span lang="pt">Todo dia, sozinho, um programa busca o preço do boi em 33 regiões do país e arquiva o resultado.</span><span lang="en">Every day, on its own, a program fetches cattle prices from 33 regions of Brazil and files the result.</span></p>
         <dl class="case-stats">
       <div><dt><span lang="pt">Coletas diárias</span><span lang="en">Daily snapshots</span></dt><dd>171<small><span lang="pt">em 181 dias de operação</span><span lang="en">over 181 days running</span></small></dd></div>
       <div><dt><span lang="pt">Regiões monitoradas</span><span lang="en">Regions tracked</span></dt><dd>33<small><span lang="pt">cotações de boi gordo</span><span lang="en">fat-cattle prices</span></small></dd></div>
@@ -66,11 +66,13 @@
       <div class="case-main">
         <section>
           <h2><span lang="pt">Problema</span><span lang="en">Problem</span></h2>
-          <p lang="pt">Não existe API pública de cotação de boi gordo no Brasil. Os preços das 33 praças ficam em páginas HTML da Scot Consultoria, e o layout muda com frequência. O Sistema-Gado precisava desses preços todo dia para calcular o valor do rebanho.</p>
-          <p lang="en">There's no public API for cattle prices in Brazil. Prices for 33 markets sit in HTML pages from Scot Consultoria, and the layout changes often. Sistema-Gado needed those prices every day to value the herd.</p>
+          <p lang="pt">No Brasil não existe um jeito oficial de um programa consultar o preço do boi, o que a área chama de API pública. Os preços das 33 praças (as regiões onde o boi é negociado) só existem em páginas do site da Scot Consultoria, feitas para gente ler, e o desenho dessas páginas muda com frequência. O Sistema-Gado precisava desses preços todo dia para calcular o valor do rebanho.</p>
+          <p lang="en">In Brazil there is no official way for a program to look up cattle prices, what the field calls a public API. The prices for the 33 trading regions exist only as pages on Scot Consultoria's website, built for people to read, and those pages get redesigned often. Sistema-Gado needed those prices every day to value the herd.</p>
         </section>
         <section>
           <h2><span lang="pt">Git como banco de dados</span><span lang="en">Git as a database</span></h2>
+          <p lang="pt">Em vez de contratar um banco de dados para guardar os preços, usei a mesma ferramenta em que programadores guardam o histórico do código. Ela já registra quem mudou o quê e quando, e não deixa reescrever o passado. Um histórico de preços precisa das duas coisas.</p>
+          <p lang="en">Instead of paying for a database to store the prices, I used the same tool programmers use to keep the history of their code. It already records who changed what and when, and it does not let anyone rewrite the past. A price history needs both.</p>
           <p lang="pt">Um cron do GitHub Actions roda todo dia às 09:00 UTC. Cada execução gera um commit com os JSONs do dia, o que resolve três coisas que um banco exigiria configurar à parte: o histórico não pode ser alterado, a infraestrutura não custa nada e qualquer fork já vem com o histórico completo. Para ver as cotações de um dia, basta <code>git show &lt;hash&gt;:cotacoes_boi_hoje.json</code>.</p>
           <p lang="en">A GitHub Actions cron job runs every day at 09:00 UTC. Each run produces a commit with that day's JSON files, which covers three things a database would need to be set up for separately: the history can't be altered, the infrastructure is free, and any fork comes with the full history. To see a given day's prices, just run <code>git show &lt;hash&gt;:cotacoes_boi_hoje.json</code>.</p>
           <figure><img src="../../assets/img/gado-scraper/workflow.webp" alt="Workflow do GitHub Actions" width="1400" height="764" loading="lazy"><figcaption><span lang="pt">Execução diária no GitHub Actions.</span><span lang="en">Daily run on GitHub Actions.</span></figcaption></figure>

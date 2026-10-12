@@ -54,7 +54,7 @@
       <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Ferramenta própria</span><span lang="en">Solo · Personal tool</span></p>
       <h1>PolyMorph</h1>
-      <p class="lede"><span lang="pt">CLI que adapta meu currículo ao texto de cada vaga, sem inventar nada.</span><span lang="en">A CLI that tailors my résumé to each job posting without making anything up.</span></p>
+      <p class="lede"><span lang="pt">Programa que reescreve meu currículo para cada vaga, sem inventar nada sobre mim.</span><span lang="en">A program that rewrites my résumé for each job posting, without making anything up about me.</span></p>
     </div>
     <div class="container case-layout">
       <div class="case-main">
@@ -65,8 +65,8 @@
         </section>
         <section>
           <h2><span lang="pt">Como funciona</span><span lang="en">How it works</span></h2>
-          <p lang="pt">O currículo base fica em JSON. O PolyMorph manda o texto da vaga para o Gemini, que reescreve o resumo, reordena as skills e ajusta o vocabulário das experiências. Depois, o Playwright gera o PDF. O modo <code>batch</code> processa uma pasta inteira de vagas de uma vez.</p>
-          <p lang="en">The base résumé is stored as JSON. PolyMorph sends the job posting to Gemini, which rewrites the summary, reorders the skills and adjusts the wording of each experience. Then Playwright renders the PDF. <code>batch</code> mode processes a whole folder of postings at once.</p>
+          <p lang="pt">O currículo base fica guardado num arquivo organizado por campos (JSON), e não num documento de texto. O PolyMorph manda o texto da vaga para o Gemini, que reescreve o resumo, reordena as skills e ajusta o vocabulário das experiências. Depois, o Playwright gera o PDF. O modo <code>batch</code> processa uma pasta inteira de vagas de uma vez.</p>
+          <p lang="en">The base résumé is stored as a field-by-field file (JSON) rather than a text document. PolyMorph sends the job posting to Gemini, which rewrites the summary, reorders the skills and adjusts the wording of each experience. Then Playwright renders the PDF. <code>batch</code> mode processes a whole folder of postings at once.</p>
           <figure><img src="../../assets/img/polymorph/arquitetura.webp" alt="Arquitetura do PolyMorph" width="1400" height="764" loading="lazy"><figcaption><span lang="pt">Fluxo: JSON base, Gemini, template e PDF.</span><span lang="en">Flow: base JSON, Gemini, template, PDF.</span></figcaption></figure>
         </section>
         <section>
@@ -98,7 +98,7 @@
         </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
-        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, Gemini API, Playwright</dd><dt><span lang="pt">Interface</span><span lang="en">Interface</span></dt><dd>CLI</dd></dl>
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Python, Gemini API, Playwright</dd><dt><span lang="pt">Interface</span><span lang="en">Interface</span></dt><dd><span lang="pt">Linha de comando (CLI)</span><span lang="en">Command line (CLI)</span></dd></dl>
         <div class="actions"><a class="btn btn-primary" href="https://github.com/Dom1ng0s/polymorph" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
       </aside>
     </div>
