@@ -52,7 +52,7 @@
   <main id="main">
     <div class="container case-hero">
       <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
-      <p class="eyebrow"><span lang="pt">Individual · Em produção</span><span lang="en">Solo · In production</span></p>
+      <p class="eyebrow"><span lang="pt">Individual · Usado na fazenda</span><span lang="en">Solo · Used on the farm</span></p>
       <h1>Sistema-Gado</h1>
       <p class="lede"><span lang="pt">Sistema de gestão para a fazenda da minha família: rebanho, fluxo de caixa e cotações num só lugar.</span><span lang="en">A management system for my family's farm: herd, cash flow and market prices in one place.</span></p>
         <dl class="case-stats">
@@ -104,13 +104,13 @@ WHERE a.deleted_at IS NULL;</code></pre>
         </section>
         <section>
           <h2><span lang="pt">Stack</span><span lang="en">Stack</span></h2>
-          <ul lang="pt"><li><strong>Flask</strong>: leve, sem ORM, porque o SQL puro era o requisito central</li><li><strong>PostgreSQL</strong>: window functions, views materializadas e índices parciais para o GMD</li><li><strong>Redis</strong>: cache</li><li><strong>Playwright</strong>: geração de PDF no servidor</li><li><strong>Flask-Limiter</strong>: limite de requisições no login e na exportação</li><li><strong>Railway</strong>: container e PostgreSQL gerenciado no mesmo provedor</li></ul>
-          <ul lang="en"><li><strong>Flask</strong>: lightweight, no ORM, since plain SQL was the core requirement</li><li><strong>PostgreSQL</strong>: window functions, materialized views and partial indexes for ADG</li><li><strong>Redis</strong>: caching</li><li><strong>Playwright</strong>: server-side PDF generation</li><li><strong>Flask-Limiter</strong>: rate limiting on login and export</li><li><strong>Railway</strong>: container and managed PostgreSQL from one provider</li></ul>
+          <ul lang="pt"><li><strong>Flask</strong>: leve, sem ORM, porque o SQL puro era o requisito central</li><li><strong>PostgreSQL</strong>: window functions, views materializadas e índices parciais para o GMD</li><li><strong>Redis</strong>: cache</li><li><strong>Playwright</strong>: geração de PDF no servidor</li><li><strong>Flask-Limiter</strong>: limite de requisições no login e na exportação</li><li><strong>Railway</strong>: container e PostgreSQL gerenciado no mesmo provedor, enquanto o sistema esteve hospedado</li></ul>
+          <ul lang="en"><li><strong>Flask</strong>: lightweight, no ORM, since plain SQL was the core requirement</li><li><strong>PostgreSQL</strong>: window functions, materialized views and partial indexes for ADG</li><li><strong>Redis</strong>: caching</li><li><strong>Playwright</strong>: server-side PDF generation</li><li><strong>Flask-Limiter</strong>: rate limiting on login and export</li><li><strong>Railway</strong>: container and managed PostgreSQL from one provider, while the system was hosted</li></ul>
         </section>
         <section>
           <h2><span lang="pt">Resultado</span><span lang="en">Outcome</span></h2>
-          <p lang="pt">O sistema está em produção. Números da base de demonstração:</p>
-          <p lang="en">The system is in production. Figures from the demo dataset:</p>
+          <p lang="pt">O sistema rodou em produção na fazenda da família. O deploy foi encerrado porque a hospedagem não se pagava para um punhado de usuários; o projeto roda localmente e o código continua aberto. Números da base de demonstração:</p>
+          <p lang="en">The system ran in production on the family farm. The deployment was retired because hosting didn't pay for itself with a handful of users; the project runs locally and the code stays open. Figures from the demo dataset:</p>
           <table class="metrics">
             <tr><th><span lang="pt">Animais no rebanho</span><span lang="en">Head of cattle</span></th><td>235</td></tr>
             <tr><th><span lang="pt">GMD médio</span><span lang="en">Average ADG</span></th><td>0,730 kg/<span lang="pt">dia</span><span lang="en">day</span></td></tr>
@@ -130,8 +130,8 @@ WHERE a.deleted_at IS NULL;</code></pre>
         </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
-        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Flask, PostgreSQL, Redis, Playwright</dd><dt><span lang="pt">Deploy</span><span lang="en">Deploy</span></dt><dd>Railway</dd><dt><span lang="pt">Demo</span><span lang="en">Demo</span></dt><dd><span lang="pt">login: <code>demonstracao</code> / <code>demonstracao</code></span><span lang="en">login: <code>demonstracao</code> / <code>demonstracao</code></span></dd></dl>
-        <div class="actions"><a class="btn btn-primary" href="https://sistemadogado.up.railway.app/login" rel="noopener"><span lang="pt">Ver demo</span><span lang="en">View demo</span></a><a class="btn" href="https://github.com/Dom1ng0s/sistema_gado" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
+        <dl><dt><span lang="pt">Papel</span><span lang="en">Role</span></dt><dd><span lang="pt">Individual</span><span lang="en">Solo</span></dd><dt><span lang="pt">Stack</span><span lang="en">Stack</span></dt><dd>Flask, PostgreSQL, Redis, Playwright</dd><dt><span lang="pt">Status</span><span lang="en">Status</span></dt><dd><span lang="pt">Sem deploy ativo; roda localmente</span><span lang="en">No live deployment; runs locally</span></dd></dl>
+        <div class="actions"><a class="btn btn-primary" href="https://github.com/Dom1ng0s/sistema_gado" rel="noopener"><span lang="pt">Código no GitHub</span><span lang="en">Code on GitHub</span></a></div>
       </aside>
     </div>
 
