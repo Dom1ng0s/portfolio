@@ -187,8 +187,7 @@ section { padding: 72px 0; }
 .about { display: grid; gap: 40px; }
 @media (min-width: 860px) { .about { grid-template-columns: 260px 1fr; gap: 64px; } }
 .about-photo { width: 100%; max-width: 260px; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); filter: grayscale(.15); }
-.facts { display: grid; gap: 28px; margin-top: 32px; }
-@media (min-width: 720px) { .facts { grid-template-columns: 1fr 1fr; } }
+.facts { display: grid; gap: 48px; margin-top: 32px; }
 .facts h3 { font: 600 .8rem var(--sans); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 10px; }
 .facts ul { list-style: none; padding: 0; margin: 0; }
 .facts > div > ul > li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: .97rem; }
@@ -284,3 +283,29 @@ section { padding: 72px 0; }
 .case-foot h2 { font-size: 1.25rem; margin-bottom: 8px; }
 .case-foot p { color: var(--muted); font-size: .95rem; margin: 0 0 16px; max-width: 46ch; }
 .case-foot .next-label { font: 600 .75rem var(--sans); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 10px; }
+
+/* ---------- Linha do tempo ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li {
+  position: relative; padding: 0 0 28px 24px;
+  border-left: 1px solid var(--line);
+}
+.timeline li:last-child { padding-bottom: 0; border-left-color: transparent; }
+.timeline li::before {
+  content: ""; position: absolute; left: -5px; top: 5px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--slate-400);
+}
+.timeline li:last-child::before { box-shadow: -1px 0 0 0 var(--line); }
+.timeline .is-current::before,
+.timeline li.is-current::before { background: var(--text); border-color: var(--text); }
+.timeline .tl-when {
+  font: 600 .75rem var(--sans); text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted); margin-bottom: 4px;
+}
+.timeline h4 { font: 600 1rem/1.35 var(--sans); margin: 0; }
+.timeline .tl-what p { color: var(--muted); font-size: .9rem; margin: 4px 0 0; max-width: 56ch; }
+@media (min-width: 720px) {
+  .timeline li { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding-bottom: 32px; }
+  .timeline .tl-when { margin-bottom: 0; padding-top: 2px; }
+}
