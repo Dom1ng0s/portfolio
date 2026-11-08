@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="pt-BR" data-lang="pt"
   data-title-pt="Davi Oliveira · Fullstack Developer"
-  data-title-en="Davi Oliveira · Fullstack Developer">
+  data-title-en="Davi Oliveira · Fullstack Developer"
+  data-desc-pt="Davi Domingos de Oliveira, desenvolvedor fullstack e estudante de Ciência da Computação na UFAL. Projetos em Django, React, Flask e SQL."
+  data-desc-en="Davi Domingos de Oliveira, fullstack developer and Computer Science student at UFAL, Brazil. Projects in Django, React, Flask and SQL."
+  data-ogdesc-pt="Sistemas web de ponta a ponta, do banco de dados à interface."
+  data-ogdesc-en="Web systems end to end, from the database to the interface.">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +28,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -43,8 +47,8 @@
         <a href="#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
       </nav>
       <div class="controls">
-        <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Alternar tema claro/escuro">
+        <button class="icon-btn" type="button" data-lang-toggle aria-label="EN — switch to English">EN</button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Mudar para o tema escuro">
           <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         </button>
@@ -60,7 +64,7 @@
         <p class="role">Fullstack Developer</p>
         <p class="lede">
           <span lang="pt">Construo sistemas web de ponta a ponta, do banco de dados à interface, para problemas que vi de perto.</span>
-          <span lang="en">I build web systems end to end, from the database to the interface, for problems I've seen up close.</span>
+          <span lang="en">I build web systems end to end, from the database to the interface, for problems I’ve seen up close.</span>
         </p>
         <p class="meta">
           <span lang="pt">Ciência da Computação na UFAL · Maceió, AL · Aberto a estágio remoto ou presencial</span>
@@ -68,9 +72,9 @@
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="assets/davi-oliveira-curriculo.pdf" target="_blank" rel="noopener"><span lang="pt">Currículo (PDF)</span><span lang="en">Résumé (PDF)</span></a>
-          <a class="btn" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener">LinkedIn</a>
         </div>
         <div class="minor-links">
+          <a href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Dom1ng0s" rel="noopener">github.com/Dom1ng0s</a>
           <a href="mailto:odomingosdavi@gmail.com">odomingosdavi@gmail.com</a>
         </div>
@@ -84,7 +88,7 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow"><span lang="pt">Projetos</span><span lang="en">Projects</span></p>
-          <h2><span lang="pt">O que construí</span><span lang="en">What I've built</span></h2>
+          <h2><span lang="pt">O que construí</span><span lang="en">What I’ve built</span></h2>
         </div>
 
         <article class="featured">
@@ -99,9 +103,9 @@
               <li>Django</li><li>Django REST Framework</li><li>React</li><li>Vite</li><li>Tailwind</li>
             </ul>
             <div class="card-links">
-              <a href="projetos/rastria/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span> →</a>
-              <a href="https://rastria.up.railway.app/" rel="noopener">Demo</a>
-              <a href="https://github.com/Dom1ng0s/RastrIA" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span></a>
+              <a href="projetos/rastria/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span><span class="sr-only">: RastrIA</span> →</a>
+              <a href="https://rastria.up.railway.app/" rel="noopener">Demo<span class="sr-only">: RastrIA</span></a>
+              <a href="https://github.com/Dom1ng0s/RastrIA" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span><span class="sr-only">: RastrIA</span></a>
             </div>
           </div>
           <div class="featured-visual" aria-hidden="true">
@@ -116,24 +120,30 @@
 
         <div class="grid">
           <article class="card">
-            <img class="card-img" src="assets/img/sistema-gado/rebanho.webp" alt="Tela de rebanho do Sistema-Gado" width="1400" height="900" loading="lazy">
+            <img class="card-img" src="assets/img/sistema-gado/rebanho.webp"
+                 srcset="assets/img/sistema-gado/rebanho-700.webp 700w, assets/img/sistema-gado/rebanho.webp 1400w"
+                 sizes="(min-width: 1140px) 498px, (min-width: 720px) 46vw, calc(100vw - 32px)"
+                 alt="Tela de rebanho do Sistema-Gado" width="1400" height="900" loading="lazy">
             <div class="card-body">
               <p class="kind"><span lang="pt">Individual · Usado na fazenda</span><span lang="en">Solo · Used on the farm</span></p>
               <h3>Sistema-Gado</h3>
               <p>
                 <span lang="pt">Sistema de gestão para a fazenda da minha família. Mostra quanto cada animal engordou, quanto dinheiro entrou e saiu e quanto vale o rebanho hoje. Antes isso ficava espalhado em planilhas.</span>
-                <span lang="en">A management system for my family's farm. It shows how much weight each animal gained, what money came in and out, and what the herd is worth today. All of it used to live in scattered spreadsheets.</span>
+                <span lang="en">A management system for my family’s farm. It shows how much weight each animal gained, what money came in and out, and what the herd is worth today. All of it used to live in scattered spreadsheets.</span>
               </p>
               <ul class="tags" aria-label="Stack"><li>Flask</li><li>PostgreSQL</li><li>Redis</li><li>Playwright</li></ul>
               <div class="card-links">
-                <a href="projetos/sistema-gado/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span> →</a>
-                <a href="https://github.com/Dom1ng0s/sistema_gado" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span></a>
+                <a href="projetos/sistema-gado/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span><span class="sr-only">: Sistema-Gado</span> →</a>
+                <a href="https://github.com/Dom1ng0s/sistema_gado" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span><span class="sr-only">: Sistema-Gado</span></a>
               </div>
             </div>
           </article>
 
           <article class="card">
-            <img class="card-img" src="assets/img/gado-scraper/workflow.webp" alt="Execução do workflow do Gado-Scraper no GitHub Actions" width="1400" height="764" loading="lazy">
+            <img class="card-img" src="assets/img/gado-scraper/workflow.webp"
+                 srcset="assets/img/gado-scraper/workflow-700.webp 700w, assets/img/gado-scraper/workflow.webp 1400w"
+                 sizes="(min-width: 1140px) 498px, (min-width: 720px) 46vw, calc(100vw - 32px)"
+                 alt="Execução do workflow do Gado-Scraper no GitHub Actions" width="1400" height="764" loading="lazy">
             <div class="card-body">
               <p class="kind"><span lang="pt">Individual · Rodando diariamente</span><span lang="en">Solo · Runs daily</span></p>
               <h3>Gado-Scraper</h3>
@@ -143,8 +153,8 @@
               </p>
               <ul class="tags" aria-label="Stack"><li>Python</li><li>pandas</li><li>BeautifulSoup</li><li>GitHub Actions</li></ul>
               <div class="card-links">
-                <a href="projetos/gado-scraper/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span> →</a>
-                <a href="https://github.com/Dom1ng0s/Gado-Scraper" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span></a>
+                <a href="projetos/gado-scraper/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span><span class="sr-only">: Gado-Scraper</span> →</a>
+                <a href="https://github.com/Dom1ng0s/Gado-Scraper" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span><span class="sr-only">: Gado-Scraper</span></a>
               </div>
             </div>
           </article>
@@ -159,8 +169,8 @@
               </p>
               <ul class="tags" aria-label="Stack"><li>Python</li><li>Gemini API</li><li>Playwright</li></ul>
               <div class="card-links">
-                <a href="projetos/polymorph/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span> →</a>
-                <a href="https://github.com/Dom1ng0s/polymorph" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span></a>
+                <a href="projetos/polymorph/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span><span class="sr-only">: PolyMorph</span> →</a>
+                <a href="https://github.com/Dom1ng0s/polymorph" rel="noopener"><span lang="pt">Código</span><span lang="en">Code</span><span class="sr-only">: PolyMorph</span></a>
               </div>
             </div>
           </article>
@@ -171,11 +181,11 @@
               <h3>Gupy Orchestrator</h3>
               <p>
                 <span lang="pt">Automação que varre as vagas da Gupy toda semana, filtra por modalidade e localização e cruza cada descrição com o PDF do meu currículo. Me manda no WhatsApp só o que é novo, com um parágrafo sobre o quanto eu encaixo e um aviso quando o requisito é excludente.</span>
-                <span lang="en">An automation that sweeps Gupy's job listings every week, filters by work model and location, and reads each description against the PDF of my résumé. It sends me only the new ones over WhatsApp, with a paragraph on how well I fit and a flag when a requirement rules me out.</span>
+                <span lang="en">An automation that sweeps Gupy’s job listings every week, filters by work model and location, and reads each description against the PDF of my résumé. It sends me only the new ones over WhatsApp, with a paragraph on how well I fit and a flag when a requirement rules me out.</span>
               </p>
               <ul class="tags" aria-label="Stack"><li>OpenBot</li><li>MCP</li><li>Python</li><li>WhatsApp API</li></ul>
               <div class="card-links">
-                <a href="projetos/gupy-orchestrator/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span> →</a>
+                <a href="projetos/gupy-orchestrator/"><span lang="pt">Estudo de caso</span><span lang="en">Case study</span><span class="sr-only">: Gupy Orchestrator</span> →</a>
               </div>
             </div>
           </article>
@@ -188,12 +198,15 @@
     <!-- Sobre -->
     <section id="sobre">
       <div class="container about">
-        <img class="about-photo" src="assets/img/profile.webp" alt="Foto de Davi Domingos de Oliveira" width="1182" height="1182" loading="lazy">
+        <img class="about-photo" src="assets/img/profile-520.webp"
+             srcset="assets/img/profile-520.webp 520w, assets/img/profile.webp 1182w"
+             sizes="260px"
+             alt="Foto de Davi Domingos de Oliveira" width="1182" height="1182" loading="lazy">
         <div>
           <p class="eyebrow"><span lang="pt">Sobre</span><span lang="en">About</span></p>
           <h2><span lang="pt">Sobre mim</span><span lang="en">About me</span></h2>
           <p lang="pt">Uso a computação para resolver problemas que encontro por perto: a gestão da fazenda da família, a adaptação de um currículo para cada vaga, a busca por estágio. Estou no 4º período de Ciência da Computação na UFAL, com formatura prevista para 2029. Em 2026 trabalhei no Laboratório TOCA (Tecnologias em Computação Acessível), no Loodus, um app que ensina Libras a crianças surdas e ouvintes por meio de jogos, onde desenvolvi minigames em Unity e C#. Desde setembro estou no GEDO, num sistema em Django de apoio à decisão para avaliação de projetos inovadores. Meus interesses são desenvolvimento web, ciência de dados e machine learning.</p>
-          <p lang="en">I use computing to solve problems close to me: managing my family's farm, tailoring a résumé to each job, looking for an internship. I'm in the 4th semester of Computer Science at UFAL, graduating in 2029. In 2026 I worked at the TOCA Lab (Accessible Computing Technologies) on Loodus, a game-based app that teaches Brazilian Sign Language to deaf and hearing children, where I built minigames in Unity and C#. Since September I've been at GEDO, on a Django decision support system for evaluating innovation projects. I'm interested in web development, data science and machine learning.</p>
+          <p lang="en">I use computing to solve problems close to me: managing my family’s farm, tailoring a résumé to each job, looking for an internship. I’m in the 4th semester of Computer Science at UFAL, graduating in 2029. In 2026 I worked at the TOCA Lab (Accessible Computing Technologies) on Loodus, a game-based app that teaches Brazilian Sign Language to deaf and hearing children, where I built minigames in Unity and C#. Since September I’ve been at GEDO, on a Django decision support system for evaluating innovation projects. I’m interested in web development, data science and machine learning.</p>
 
           <div class="facts">
             <div>
@@ -224,22 +237,26 @@
             <div>
               <h3>Stack</h3>
               <div class="stack-group">
-                <strong><span lang="pt">Uso com segurança</span><span lang="en">Confident with</span></strong>
+                <strong><span lang="pt">Backend, onde uso com segurança</span><span lang="en">Backend, where I’m confident</span></strong>
                 <ul class="tags"><li>Python</li><li>Django</li><li>Flask</li><li>SQL</li><li>C</li></ul>
               </div>
               <div class="stack-group">
-                <strong><span lang="pt">Já usei em projeto</span><span lang="en">Used in projects</span></strong>
-                <ul class="tags"><li>JavaScript</li><li>React</li><li>C#</li><li>Unity</li><li>Java</li><li>Docker</li><li>GitHub Actions</li></ul>
+                <strong><span lang="pt">Frontend, em projeto real</span><span lang="en">Frontend, in real projects</span></strong>
+                <ul class="tags"><li>JavaScript</li><li>React</li><li>Vite</li><li>Tailwind</li><li>HTML</li><li>CSS</li></ul>
               </div>
               <div class="stack-group">
-                <strong><span lang="pt">Estudando</span><span lang="en">Learning</span></strong>
-                <ul class="tags"><li>JavaScript</li><li>React</li><li>Java</li><li>Machine Learning</li></ul>
+                <strong><span lang="pt">Também já usei</span><span lang="en">Also used</span></strong>
+                <ul class="tags"><li>C#</li><li>Unity</li><li>Java</li><li>Docker</li><li>GitHub Actions</li></ul>
+              </div>
+              <div class="stack-group">
+                <strong><span lang="pt">Estudando agora</span><span lang="en">Learning now</span></strong>
+                <ul class="tags"><li>Machine Learning</li></ul>
               </div>
               <div class="stack-group">
                 <strong><span lang="pt">Ferramentas</span><span lang="en">Tools</span></strong>
                 <ul class="tags"><li>Linux</li><li>Git</li></ul>
               </div>
-              <p style="font-size:.9rem;color:var(--muted);margin-top:12px">
+              <p class="lang-note">
                 <span lang="pt">Idiomas: português (nativo), inglês (avançado), espanhol (básico).</span>
                 <span lang="en">Languages: Portuguese (native), English (advanced), Spanish (basic).</span>
               </p>
@@ -255,14 +272,18 @@
     <section id="contato" class="contact">
       <div class="container">
         <p class="eyebrow"><span lang="pt">Contato</span><span lang="en">Contact</span></p>
-        <h2><span lang="pt">Procuro estágio em desenvolvimento.</span><span lang="en">I'm looking for a development internship.</span></h2>
+        <h2><span lang="pt">Procuro estágio em desenvolvimento.</span><span lang="en">I’m looking for a development internship.</span></h2>
         <p>
           <span lang="pt">Remoto ou presencial em Maceió. O jeito mais rápido de falar comigo é pelo LinkedIn ou por email.</span>
           <span lang="en">Remote or on-site in Maceió, Brazil. The fastest way to reach me is LinkedIn or email.</span>
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener">LinkedIn</a>
-          <a class="btn" href="mailto:odomingosdavi@gmail.com">odomingosdavi@gmail.com</a>
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener"><span lang="pt">Mensagem no LinkedIn</span><span lang="en">Message me on LinkedIn</span></a>
+          <a class="btn" href="mailto:odomingosdavi@gmail.com"><span lang="pt">Enviar e-mail</span><span lang="en">Send an email</span></a>
+        </div>
+        <div class="minor-links">
+          <a href="mailto:odomingosdavi@gmail.com">odomingosdavi@gmail.com</a>
+          <a href="https://github.com/Dom1ng0s" rel="noopener">github.com/Dom1ng0s</a>
         </div>
       </div>
     </section>

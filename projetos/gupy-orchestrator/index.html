@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="pt-BR" data-lang="pt"
   data-title-pt="Gupy Orchestrator · Estudo de caso · Davi Oliveira"
-  data-title-en="Gupy Orchestrator · Case study · Davi Oliveira">
+  data-title-en="Gupy Orchestrator · Case study · Davi Oliveira"
+  data-desc-pt="Gupy Orchestrator: automação que lê as vagas da Gupy toda semana, cruza cada descrição com o meu currículo e me avisa no WhatsApp só o que é novo."
+  data-desc-en="Gupy Orchestrator: an automation that reads Gupy's job listings every week, checks each description against my résumé and sends me only what is new over WhatsApp."
+  data-ogdesc-pt="Gupy Orchestrator: automação que lê as vagas da Gupy toda semana, cruza cada descrição com o meu currículo e me avisa no WhatsApp só o que é novo."
+  data-ogdesc-en="Gupy Orchestrator: it reads Gupy's job listings every week and sends me only what is new over WhatsApp.">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +16,9 @@
   <meta property="og:title" content="Gupy Orchestrator · Estudo de caso">
   <meta property="og:description" content="Gupy Orchestrator: automação que lê as vagas da Gupy toda semana, cruza cada descrição com o meu currículo e me avisa no WhatsApp só o que é novo.">
   <meta property="og:url" content="https://davioliveira.is-a.dev/projetos/gupy-orchestrator/">
+  <!-- Provisório: trocar por um print do relatório semanal do WhatsApp, com os dados borrados.
+       É o único estudo de caso sem imagem própria, na página e no compartilhamento. -->
+  <meta property="og:image" content="https://davioliveira.is-a.dev/assets/img/profile.jpg">
   <meta name="theme-color" content="#011936">
   <link rel="icon" href="../../hexagon-letter-d.svg" type="image/svg+xml">
   <script>
@@ -20,7 +27,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@500;600&display=swap">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <script src="../../assets/js/main.js" defer></script>
 </head>
@@ -38,8 +45,8 @@
         <a href="../../#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
       </nav>
       <div class="controls">
-        <button class="icon-btn" type="button" data-lang-toggle aria-label="Switch to English">EN</button>
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Alternar tema claro/escuro">
+        <button class="icon-btn" type="button" data-lang-toggle aria-label="EN — switch to English">EN</button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Mudar para o tema escuro">
           <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         </button>
@@ -52,7 +59,7 @@
       <a class="back" href="../../#projetos">← <span lang="pt">Todos os projetos</span><span lang="en">All projects</span></a>
       <p class="eyebrow"><span lang="pt">Individual · Rodando toda semana</span><span lang="en">Solo · Runs weekly</span></p>
       <h1>Gupy Orchestrator</h1>
-      <p class="lede"><span lang="pt">Automação que lê as vagas da Gupy toda semana e me manda no WhatsApp só o que é novo e faz sentido para mim.</span><span lang="en">An automation that reads Gupy's job listings every week and sends me, over WhatsApp, only what is new and actually makes sense for me.</span></p>
+      <p class="lede"><span lang="pt">Automação que lê as vagas da Gupy toda semana e me manda no WhatsApp só o que é novo e faz sentido para mim.</span><span lang="en">An automation that reads Gupy’s job listings every week and sends me, over WhatsApp, only what is new and actually makes sense for me.</span></p>
     </div>
     <div class="container case-layout">
       <div class="case-main">
@@ -60,40 +67,40 @@
           <h2><span lang="pt">O problema</span><span lang="en">The problem</span></h2>
           <p lang="pt">Eu abria a Gupy todo dia e lia descrição de vaga até o fim. O custo não era o número de vagas, era o que estava enterrado no último parágrafo. Várias vagas que pareciam certas pediam formação até 2027. Eu concluo em 2029.</p>
           <p lang="pt">Então o trabalho real era descartar. Eu lia a vaga inteira, achava o requisito que me eliminava e fechava a aba. Repetia isso de manhã, todo dia, antes de encontrar alguma coisa para a qual valia a pena me candidatar.</p>
-          <p lang="en">I opened Gupy every day and read job descriptions to the end. The cost wasn't the number of postings, it was what sat buried in the last paragraph. Several jobs that looked right asked for a degree completed by 2027. I graduate in 2029.</p>
-          <p lang="en">So the real work was ruling things out. I'd read a whole posting, find the requirement that disqualified me, and close the tab. Same thing every morning, before finding anything actually worth applying to.</p>
+          <p lang="en">I opened Gupy every day and read job descriptions to the end. The cost wasn’t the number of postings, it was what sat buried in the last paragraph. Several jobs that looked right asked for a degree completed by 2027. I graduate in 2029.</p>
+          <p lang="en">So the real work was ruling things out. I’d read a whole posting, find the requirement that disqualified me, and close the tab. Same thing every morning, before finding anything actually worth applying to.</p>
         </section>
         <section>
           <h2><span lang="pt">Como funciona</span><span lang="en">How it works</span></h2>
           <p lang="pt">Um prompt orquestrador roda no OpenBot e faz três buscas no conector de candidatos da Gupy, não uma. A primeira pede estágio remoto no país inteiro (<code>jobTypes=vacancy_type_internship</code>, <code>workplaceTypes=remote</code>, <code>limit=100</code>, ordenado por data de publicação) e filtra tech depois, no texto. A segunda pede todo estágio em Alagoas, de qualquer área, porque vaga de tech local às vezes está anunciada fora da categoria. A terceira abre mão do recorte de estágio e pede remoto ou híbrido em Alagoas, para alcançar vaga júnior efetiva. As três passam por <code>search_jobs</code>, com <code>get_job_by_id</code> e <code>list_companies</code> para completar o que a listagem não traz.</p>
           <p lang="pt">O que sobra vai para a leitura, com a descrição aberta, o PDF do meu currículo e a minha lista de lacunas declaradas (Power BI, scikit-learn, Excel avançado). O orquestrador procura cinco coisas que costumam estar no fim do texto: curso exigido, período mínimo, ano de conclusão, exigência de morar em outra cidade (existe vaga anunciada como remota que pede residência local) e critério afirmativo restrito, que ele sinaliza sem presumir que eu me enquadro. Com isso separa requisito excludente de requisito desejável e escreve um parágrafo com o encaixe e o gap.</p>
           <p lang="pt">Uma vez por semana sai um relatório pelo WhatsApp Orchestrator: número de vagas novas, tabela com vaga, empresa, modalidade, prazo e link, um parágrafo por vaga e os prazos urgentes no fim, tudo formatado para leitura no celular. Se o conector não responder, o orquestrador avisa em uma linha e busca na web em vez de parar.</p>
-          <p lang="en">An orchestrator prompt runs on OpenBot and makes three searches against Gupy's candidate connector, not one. The first asks for remote internships nationwide (<code>jobTypes=vacancy_type_internship</code>, <code>workplaceTypes=remote</code>, <code>limit=100</code>, sorted by publication date) and filters for tech afterwards, in the text. The second asks for every internship in Alagoas, any field, because a local tech job is sometimes posted outside the category. The third drops the internship filter and asks for remote or hybrid roles in Alagoas, to reach junior positions. All three go through <code>search_jobs</code>, with <code>get_job_by_id</code> and <code>list_companies</code> filling in what the listing leaves out.</p>
+          <p lang="en">An orchestrator prompt runs on OpenBot and makes three searches against Gupy’s candidate connector, not one. The first asks for remote internships nationwide (<code>jobTypes=vacancy_type_internship</code>, <code>workplaceTypes=remote</code>, <code>limit=100</code>, sorted by publication date) and filters for tech afterwards, in the text. The second asks for every internship in Alagoas, any field, because a local tech job is sometimes posted outside the category. The third drops the internship filter and asks for remote or hybrid roles in Alagoas, to reach junior positions. All three go through <code>search_jobs</code>, with <code>get_job_by_id</code> and <code>list_companies</code> filling in what the listing leaves out.</p>
           <p lang="en">What survives goes to the reading step, with the full description, the PDF of my résumé and my own list of gaps (Power BI, scikit-learn, advanced Excel). The orchestrator looks for five things that tend to sit at the end of the text: required degree, minimum semester, graduation year, a requirement to live in another city (there are postings listed as remote that still ask for local residency), and restricted affirmative-action criteria, which it flags without assuming I qualify. From that it separates disqualifying requirements from nice-to-haves and writes a paragraph covering both the fit and the gap.</p>
-          <p lang="en">Once a week a report goes out over WhatsApp Orchestrator: how many new jobs there are, a table with role, company, work model, deadline and link, a paragraph per job, and the urgent deadlines at the end, all formatted to be read on a phone. If the connector doesn't answer, the orchestrator says so in one line and searches the web instead of stopping.</p>
+          <p lang="en">Once a week a report goes out over WhatsApp Orchestrator: how many new jobs there are, a table with role, company, work model, deadline and link, a paragraph per job, and the urgent deadlines at the end, all formatted to be read on a phone. If the connector doesn’t answer, the orchestrator says so in one line and searches the web instead of stopping.</p>
         </section>
         <section>
           <h2><span lang="pt">A decisão de engenharia mais interessante</span><span lang="en">The engineering decision worth talking about</span></h2>
           <p lang="pt">A parte difícil não foi código, foi escrever o critério de avaliação. A descrição de vaga não marca o que é excludente. "Formação até 2027" e "desejável conhecimento em Power BI" aparecem na mesma lista, com a mesma formatação, às vezes no mesmo parágrafo. Se o orquestrador tratar os dois do mesmo jeito, ele erra para os dois lados: ou me manda vaga que eu não posso pegar, ou corta vaga boa por causa de uma ferramenta que eu aprendo em uma semana. O que eu tive que definir foi o que torna um requisito inegociável, e isso é uma regra minha, não um campo que vem da API.</p>
           <p lang="pt">O segundo ponto é o estado. O orquestrador mantém um registro das vagas já enviadas, com ID e prazo, e a regra é nunca reenviar um ID que já saiu. Sem isso, um relatório semanal me mandaria de volta tudo que continua aberto, e eu pararia de abrir o relatório. A exceção é o prazo: numa semana sem vaga nova, ele repete só as que fecham em até sete dias, porque aí o que mudou não foi a vaga, foi quanto tempo me resta.</p>
           <p lang="pt">O ganho principal não foi tempo de leitura. Foi consistência: a automação não pula uma semana porque eu tinha prova.</p>
-          <p lang="en">The hard part wasn't the code, it was writing the evaluation criteria. A job description doesn't label which requirements are disqualifying. "Degree completed by 2027" and "Power BI experience a plus" show up in the same list, in the same formatting, sometimes in the same paragraph. If the orchestrator treats them alike, it fails in both directions: it either sends me a job I can't take, or drops a good one over a tool I could learn in a week. What I had to define was what makes a requirement non-negotiable, and that's a rule of mine, not a field the API hands me.</p>
-          <p lang="en">The second piece is state. The orchestrator keeps a record of the jobs it has already sent, with ID and deadline, and the rule is never to resend an ID that has gone out. Without that, a weekly report would hand me back everything still open, and I'd stop opening the report. The exception is the deadline: in a week with no new jobs, it repeats only the ones closing within seven days, because what changed there isn't the posting, it's how much time I have left.</p>
-          <p lang="en">The main gain wasn't reading time. It was consistency: the automation doesn't skip a week because I had an exam.</p>
+          <p lang="en">The hard part wasn’t the code, it was writing the evaluation criteria. A job description doesn’t label which requirements are disqualifying. "Degree completed by 2027" and "Power BI experience a plus" show up in the same list, in the same formatting, sometimes in the same paragraph. If the orchestrator treats them alike, it fails in both directions: it either sends me a job I can’t take, or drops a good one over a tool I could learn in a week. What I had to define was what makes a requirement non-negotiable, and that’s a rule of mine, not a field the API hands me.</p>
+          <p lang="en">The second piece is state. The orchestrator keeps a record of the jobs it has already sent, with ID and deadline, and the rule is never to resend an ID that has gone out. Without that, a weekly report would hand me back everything still open, and I’d stop opening the report. The exception is the deadline: in a week with no new jobs, it repeats only the ones closing within seven days, because what changed there isn’t the posting, it’s how much time I have left.</p>
+          <p lang="en">The main gain wasn’t reading time. It was consistency: the automation doesn’t skip a week because I had an exam.</p>
         </section>
         <section>
           <h2><span lang="pt">Limitações</span><span lang="en">Limitations</span></h2>
           <p lang="pt">Não tem demo pública. O sistema depende do PDF do meu currículo e do meu WhatsApp, e os dois são meus.</p>
           <p lang="pt">A avaliação de fit é feita por LLM, então não é determinística. A mesma vaga pode receber análises com palavras diferentes em execuções diferentes, e a classificação de um requisito ambíguo pode variar. O prompt proíbe inventar vaga, link, prazo ou faixa salarial, e só autoriza o <code>jobUrl</code> que o conector devolveu, mas isso é uma restrição escrita, não uma garantia de execução.</p>
           <p lang="pt">Os conectores da Gupy são a única fonte do fluxo normal. Vaga que não está na Gupy só aparece quando o conector falha e o orquestrador cai na busca web, que é o caminho de exceção e não tem a mesma cobertura.</p>
-          <p lang="en">There's no public demo. The system runs on the PDF of my résumé and my WhatsApp number, and both are mine.</p>
-          <p lang="en">Fit is assessed by an LLM, so it isn't deterministic. The same job can come back worded differently on different runs, and an ambiguous requirement can be classified differently. The prompt forbids inventing a job, a link, a deadline or a salary range, and only allows the <code>jobUrl</code> the connector returned, but that's a written constraint, not a guarantee at runtime.</p>
-          <p lang="en">Gupy's connectors are the only source on the normal path. A job that isn't on Gupy shows up only when the connector fails and the orchestrator falls back to a web search, which is the exception route and doesn't have the same coverage.</p>
+          <p lang="en">There’s no public demo. The system runs on the PDF of my résumé and my WhatsApp number, and both are mine.</p>
+          <p lang="en">Fit is assessed by an LLM, so it isn’t deterministic. The same job can come back worded differently on different runs, and an ambiguous requirement can be classified differently. The prompt forbids inventing a job, a link, a deadline or a salary range, and only allows the <code>jobUrl</code> the connector returned, but that’s a written constraint, not a guarantee at runtime.</p>
+          <p lang="en">Gupy’s connectors are the only source on the normal path. A job that isn’t on Gupy shows up only when the connector fails and the orchestrator falls back to a web search, which is the exception route and doesn’t have the same coverage.</p>
         </section>
         <section>
           <h2><span lang="pt">Fale comigo</span><span lang="en">Get in touch</span></h2>
           <p lang="pt">Posso mostrar o critério de avaliação em detalhe, ou falar sobre uma vaga que você esteja abrindo. Mensagem no LinkedIn ou e-mail, os dois chegam em mim.</p>
-          <p lang="en">I can walk you through the evaluation criteria in detail, or talk about a role you're hiring for. A LinkedIn message or an email, both reach me.</p>
+          <p lang="en">I can walk you through the evaluation criteria in detail, or talk about a role you’re hiring for. A LinkedIn message or an email, both reach me.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener"><span lang="pt">Mensagem no LinkedIn</span><span lang="en">Message me on LinkedIn</span></a>
             <a class="btn" href="mailto:odomingosdavi@gmail.com?subject=Gupy%20Orchestrator"><span lang="pt">Enviar e-mail</span><span lang="en">Send an email</span></a>
@@ -110,12 +117,12 @@
       <div>
         <p class="next-label"><span lang="pt">Próximo projeto</span><span lang="en">Next project</span></p>
         <h2><a href="../sistema-gado/">Sistema-Gado →</a></h2>
-        <p><span lang="pt">Sistema de gestão para a fazenda da minha família, do peso de cada animal ao caixa do mês.</span><span lang="en">A management system for my family's farm, from each animal's weight to the month's cash flow.</span></p>
+        <p><span lang="pt">Sistema de gestão para a fazenda da minha família, do peso de cada animal ao caixa do mês.</span><span lang="en">A management system for my family’s farm, from each animal’s weight to the month’s cash flow.</span></p>
         <p class="minor-links"><a href="../../#projetos"><span lang="pt">Ver todos os projetos</span><span lang="en">See all projects</span></a></p>
       </div>
       <div>
-        <h2><span lang="pt">Vamos conversar</span><span lang="en">Let's talk</span></h2>
-        <p><span lang="pt">Estou procurando estágio em desenvolvimento, remoto ou presencial em Maceió. Se quiser falar sobre este projeto ou sobre uma vaga, é só escrever.</span><span lang="en">I'm looking for a development internship, remote or on-site in Maceió. If you want to talk about this project or about a role, just write.</span></p>
+        <h2><span lang="pt">Vamos conversar</span><span lang="en">Let’s talk</span></h2>
+        <p><span lang="pt">Estou procurando estágio em desenvolvimento, remoto ou presencial em Maceió. Se quiser falar sobre este projeto ou sobre uma vaga, é só escrever.</span><span lang="en">I’m looking for a development internship, remote or on-site in Maceió. If you want to talk about this project or about a role, just write.</span></p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:odomingosdavi@gmail.com"><span lang="pt">Enviar e-mail</span><span lang="en">Send an email</span></a>
           <a class="btn" href="https://www.linkedin.com/in/davidomingosdeoliveira/" rel="noopener">LinkedIn</a>
