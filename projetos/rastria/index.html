@@ -55,7 +55,13 @@
       <p class="eyebrow"><span lang="pt">Projeto em equipe · Em desenvolvimento</span><span lang="en">Team project · In development</span></p>
       <h1>RastrIA</h1>
       <p class="lede"><span lang="pt">Plataforma de acompanhamento de saúde e desempenho físico para instituições, feita em equipe para o Edital Centelha.</span><span lang="en">A health and physical-performance tracking platform for institutions, built as a team for the Centelha program.</span></p>
-    </div>
+        <dl class="case-stats">
+      <div><dt><span lang="pt">Rotas auditadas</span><span lang="en">Routes audited</span></dt><dd>30<small><span lang="pt">18 correções geradas</span><span lang="en">18 fixes produced</span></small></dd></div>
+      <div><dt><span lang="pt">Testes automatizados</span><span lang="en">Automated tests</span></dt><dd>109<small><span lang="pt">em 7 componentes</span><span lang="en">across 7 components</span></small></dd></div>
+      <div><dt><span lang="pt">Varreduras de acessibilidade</span><span lang="en">Accessibility sweeps</span></dt><dd>43<small><span lang="pt">zero violações</span><span lang="en">zero violations</span></small></dd></div>
+      <div><dt><span lang="pt">Itens essenciais WCAG</span><span lang="en">Essential WCAG items</span></dt><dd>15/15<small><span lang="pt">meta: 2.2 AA + eMAG 3.1</span><span lang="en">target: 2.2 AA + eMAG 3.1</span></small></dd></div>
+    </dl>
+  </div>
     <div class="container case-layout">
       <div class="case-main">
         <section>
@@ -70,21 +76,33 @@
         </section>
         <section>
           <h2><span lang="pt">Decisões e dificuldades</span><span lang="en">Decisions and challenges</span></h2>
-          <p lang="pt"><span class="todo">TODO</span> Estudo de caso em desenvolvimento: principais decisões técnicas, o problema mais difícil e como foi resolvido.</p>
-          <p lang="en"><span class="todo">TODO</span> Case study in progress: key technical decisions, the hardest problem and how it was solved.</p>
+          <p lang="pt">Acessibilidade entrou como requisito, não como acabamento. O cliente é uma instituição pública, o que traz o eMAG 3.1 junto com a WCAG 2.2 AA, e isso muda o que dá para construir: componente sem foco visível, informação transmitida só por cor e gaveta que prende o teclado deixam de ser opção.</p>
+          <p lang="en">Accessibility was a requirement, not a finish. The client is a public institution, which brings Brazil's eMAG 3.1 alongside WCAG 2.2 AA, and that changes what can be built: a component with no visible focus, information carried by color alone, a drawer that traps the keyboard, none of those are options.</p>
+          <p lang="pt">A parte difícil não foi corrigir, foi impedir que voltasse. Uma auditoria em setembro cobriu as 30 rotas e gerou 18 correções. Para que não houvesse regressão, boa parte da verificação virou teste: lint <code>jsx-a11y</code> em todo o <code>src</code>, axe por componente e uma varredura axe por página, que roda cada rota nos temas claro e escuro, com cada preferência de acessibilidade isolada, com o tour aberto e com a tela reduzida a 320px.</p>
+          <p lang="en">The hard part wasn't fixing things, it was keeping them fixed. A September audit covered all 30 routes and produced 18 fixes. To stop regressions, most of the checking became tests: <code>jsx-a11y</code> lint across <code>src</code>, axe per component, and an axe sweep per page that runs every route in light and dark themes, with each accessibility preference isolated, with the guided tour open, and with the screen narrowed to 320px.</p>
+          <p lang="pt">A separação entre as duas pontas também foi decisão de projeto. O frontend roda sobre uma camada de dados simulada com TanStack Query, então as telas puderam ser construídas e testadas com estados de carregamento e de erro reais, sem esperar cada endpoint ficar pronto. E como o produto promete que o comando não vê dado clínico individual, a segregação de acesso por papel é testada em todos os pares de papel e rota.</p>
+          <p lang="en">Splitting the two ends was a design decision too. The frontend runs on a mock data layer with TanStack Query, so screens could be built and tested against real loading and error states without waiting for each endpoint. And since the product promises that command staff never see individual clinical data, role-based access is tested across every role and route pair.</p>
         </section>
         <section>
           <h2><span lang="pt">Resultado</span><span lang="en">Outcome</span></h2>
           <p lang="pt">O projeto está em desenvolvimento. Uma versão de testes está no ar em <a href="https://rastria.up.railway.app/" rel="noopener">rastria.up.railway.app</a>.</p>
           <p lang="en">The project is in development. A test build is live at <a href="https://rastria.up.railway.app/" rel="noopener">rastria.up.railway.app</a>.</p>
           <figure><img src="../../assets/img/rastria/landing.webp" alt="Página inicial do RastrIA, com o resumo de indicadores de saúde" width="1400" height="793" loading="lazy"><figcaption><span lang="pt">Página pública da versão de testes, em React com Tailwind.</span><span lang="en">Public page of the test build, in React with Tailwind.</span></figcaption></figure>
-          <p lang="pt"><span class="todo">TODO</span> Métricas e próximos passos.</p>
-          <p lang="en"><span class="todo">TODO</span> Metrics and next steps.</p>
+          <p lang="pt">A auditoria aberta em 23/09/2026 foi fechada em 03/10, com os 15 itens essenciais resolvidos e a verificação automática no lugar.</p>
+          <p lang="en">The audit opened on 2026-09-23 was closed on 10-03, with all 15 essential items resolved and automated checking in place.</p>
         </section>
         <section>
           <h2><span lang="pt">Próximos passos</span><span lang="en">Next steps</span></h2>
-          <p lang="pt"><span class="todo">TODO</span> Definir depois da primeira entrega institucional.</p>
-          <p lang="en"><span class="todo">TODO</span> To be defined after the first institutional release.</p>
+          <ul lang="pt">
+            <li>Validação com leitor de tela real, NVDA no Firefox e VoiceOver no iOS. Ferramenta automática cobre de 30% a 40% dos critérios da WCAG, e o eMAG exige as duas avaliações</li>
+            <li>Ligar as telas à API, substituindo a camada de dados simulada</li>
+            <li>Primeira entrega institucional</li>
+          </ul>
+          <ul lang="en">
+            <li>Validation with a real screen reader, NVDA on Firefox and VoiceOver on iOS. Automated tools cover 30% to 40% of WCAG criteria, and eMAG requires both kinds of evaluation</li>
+            <li>Connect the screens to the API, replacing the mock data layer</li>
+            <li>First institutional release</li>
+          </ul>
         </section>
       </div>
       <aside class="aside" aria-label="Ficha técnica">
